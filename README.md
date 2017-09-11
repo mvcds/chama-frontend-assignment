@@ -9,6 +9,6 @@ Choose one of the sample applications, and add the following features. We use Re
 
 You can upload your solution to GitHub and send me the URL.
 
-# Assignments
+# Record
 Here you can check all submitted assignments so far:
 * [Rafael Violato](https://github.com/rfviolato/todoapp-react-redux)
