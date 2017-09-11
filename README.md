@@ -22,3 +22,8 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 
 ### Delivery
 You can create a repository in GitHub to host the assigment. We need both Firebase hosting and Github repo URLs.
+
+And that's it!
+Happy coding!
+
+![cat typing](https://media2.giphy.com/media/lJNoBCvQYp7nq/giphy.gif)
