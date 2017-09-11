@@ -8,3 +8,7 @@ Choose one of the sample applications, and add the following features. We use Re
 - Set a due time. Add real-time visual / auditive hints to the TODO item that indicate that the due time is near / has passed. 
 
 You can upload your solution to GitHub and send me the URL.
+
+# Assignments
+Here you can check all submitted assignments so far:
+* [Rafael Violato](https://github.com/rfviolato/todoapp-react-redux)
