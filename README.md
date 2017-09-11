@@ -17,7 +17,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 * Use Firebase real-time database to keep all the todos;
 * Manage database state using Redux;
 * Assign priority to a TODO and order them by highest to lowest priority;
-* Set a due time. Add real-time visual / auditive hints to the TODO item that indicate that the due time is near / has passed;
+* Set a due time. Add real-time visual and auditive hints to the TODO item that indicate that the due time is near and has passed;
 * Host working app in a Firebase Hosting environment.
 
 # Delivery
