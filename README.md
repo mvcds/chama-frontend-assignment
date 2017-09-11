@@ -22,7 +22,3 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 
 ### Delivery
 You can create a repository in GitHub to host the assigment. We need both Firebase hosting and Github repo URLs.
-
-# Record (don't send this to candidates)
-Here you can check all submitted assignments so far:
-* [Rafael Violato](https://github.com/rfviolato/todoapp-react-redux) (old assigment)
