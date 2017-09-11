@@ -4,7 +4,7 @@
 The goal of this assignment is to see how the candidate performs using the same tools that are used in every-day chama web development so we can judge how one would perform solving common development tasks that we have.
 
 ### Stack
-In Chama, our frontend stack consists in React + Redux, so it is needed that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
+In Chama, our frontend stack consists in React + Redux :heart:, so it is needed that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
 
 ### First steps
 Go to http://todomvc.com/. On this website, you will find many sample implementations of the same TODO application, every time using a different framework. You can choose [React](http://todomvc.com/examples/react/#/) implementation to have a place to start at. It's ok to use the same styling as the original application.
@@ -23,7 +23,6 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 # Delivery
 You can create a repository in GitHub to host the assigment. We need both Firebase hosting and Github repo URLs.
 
-And that's it!
-Happy coding!
+And that's it. Happy coding! :metal:
 
 <img src="https://user-images.githubusercontent.com/5693916/30273942-84252588-96fb-11e7-9420-5516b92cb1f7.gif" data-canonical-src="https://user-images.githubusercontent.com/5693916/30273942-84252588-96fb-11e7-9420-5516b92cb1f7.gif" width="250" height="250" />
