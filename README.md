@@ -26,4 +26,4 @@ You can create a repository in GitHub to host the assigment. We need both Fireba
 And that's it!
 Happy coding!
 
-![cat typing](https://user-images.githubusercontent.com/5693916/30273942-84252588-96fb-11e7-9420-5516b92cb1f7.gif)
+![cat typing](https://user-images.githubusercontent.com/5693916/30273942-84252588-96fb-11e7-9420-5516b92cb1f7.gif =250x250)
