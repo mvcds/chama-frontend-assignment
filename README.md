@@ -20,7 +20,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 * Set a due time. Add real-time visual / auditive hints to the TODO item that indicate that the due time is near / has passed;
 * Host working app in a Firebase Hosting environment.
 
-### Delivery
+# Delivery
 You can create a repository in GitHub to host the assigment. We need both Firebase hosting and Github repo URLs.
 
 And that's it!
