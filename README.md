@@ -10,7 +10,7 @@ For this assignment you are supposed to build a good ol' to-do app and the abili
 In Chama, our frontend stack consists of React + Redux :heart:, therefor it's required that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
 
 ### Firebase
-Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a real-time experience. Because of this, we require that some features of Firebase are used in this assignment. There is a free-plan that supports the requirements of this assignment (Hosting, Auth and real-time Database).
+Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a real-time experience. Because of this, we require that some features of Firebase are used in this assignment. There is a free-plan (default) that supports the requirements of this assignment (Hosting, Auth and real-time Database) and you should be able to start creating a project with you own Google account. Eezy peezy.
 
 ### Features
 * Sign-in/sign-out functionality using Firease Auth;
