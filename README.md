@@ -7,7 +7,7 @@ The goal of this assignment is to have the candidate work with the same tools th
 For this assignment you are supposed to build a good ol' to-do app and the ability to add, complete and edit a TODO is mandatory but with some features (described [below](#features)) to spicy things up!
 
 ### Stack
-In Chama, our frontend stack consists of React + Redux :heart:, therefor it's required that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
+In Chama, our frontend stack consists of [React](https://facebook.github.io/react/docs/hello-world.html) + [Redux](http://redux.js.org/) :heart:, therefor it's required that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
 
 ### Firebase
 Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a real-time experience. Because of this, we require that some features of Firebase are used in this assignment. There is a free-plan (default) that supports the requirements of this assignment (Hosting, Auth and real-time Database) and you should be able to start creating a project with you own Google account. Eezy peezy.
