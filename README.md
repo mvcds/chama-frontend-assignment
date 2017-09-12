@@ -4,7 +4,7 @@
 The goal of this assignment is to have the candidate work with the same tools that are used in every-day Chama web development, so we can learn how one would perform while solving common development tasks that we have.
 
 ### Description
-For this assignment you are supposed to build a good ol' to-do app and the ability to add, complete and edit a TODO is mandatory but with some features (described below) to spicy things up!
+For this assignment you are supposed to build a good ol' to-do app and the ability to add, complete and edit a TODO is mandatory but with some features (described [below](#features)) to spicy things up!
 
 ### Stack
 In Chama, our frontend stack consists of React + Redux :heart:, therefor it's required that the same stack is used in this assigment. Complementary libraries are free to use (e.g. lodash).
