@@ -24,7 +24,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 * You don't need to spend time creating a dev/build environment, using [react-create-app](https://github.com/facebookincubator/create-react-app) (and other alike tools) is totally ok!
 * Never done anything with Firebase? You can follow [this guide](https://firebase.google.com/docs/web/setup) and it should give you a nice starting point.
 * If you wish to spend less time writing boilerplate code, go to http://todomvc.com/, in this website, you will find many sample implementations of the same TODO application, every time using a different framework. You can choose the [React](http://todomvc.com/examples/react/#/) implementation as a starting point. It's OK to use the same styling as the original application.
-* Don't re-invent the wheel! Custom styling and set of components (like datepickers, buttons, input fields, etc.) is a plus but definitely not needed, you should spend more time on the application itself, so using UI libraries is ok! You can try [Material-ui](https://github.com/callemall/material-ui) or [Elemental UI](https://github.com/elementalui/elemental) which have great integration with React environments.
+* Don't re-invent the wheel! Custom styling and set of components (like datepickers, buttons, input fields, etc.) is a plus but definitely not needed, you should spend more time on the application itself, so using UI libraries is ok! You can try [Material-ui](https://github.com/callemall/material-ui) or [Elemental UI](https://github.com/elementalui/elemental), both have great integration with React environments.
 
 # Delivery
 You can create a repository in GitHub to host the assigment. We need both Firebase hosting and Github repo URLs.
