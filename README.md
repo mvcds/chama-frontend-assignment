@@ -1,3 +1,5 @@
+![logo](https://user-images.githubusercontent.com/5693916/30330868-8071b3da-97d6-11e7-8207-99243d19f1fe.png)
+
 # Assignment
 
 ### Goal
