@@ -1,5 +1,6 @@
 <p align="center">
 <img src="https://user-images.githubusercontent.com/5693916/30330868-8071b3da-97d6-11e7-8207-99243d19f1fe.png" data-canonical-src="https://user-images.githubusercontent.com/5693916/30330868-8071b3da-97d6-11e7-8207-99243d19f1fe.png" width="300" height="300" />
+<img src="https://user-images.githubusercontent.com/5693916/30366335-fbb734a4-986a-11e7-9c17-db8c33f8f760.png" data-canonical-src="https://user-images.githubusercontent.com/5693916/30366335-fbb734a4-986a-11e7-9c17-db8c33f8f760.png" width="300" height="300" />
 </p>
 
 # Assignment
