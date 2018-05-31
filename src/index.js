@@ -1,8 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// create-react-app demands an index.js file
+// I've added this as a workaround so I could structure my folders the way I like
+// i.e. folders right below "src" are layer-like
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// eslint-disable-next-line
+import Web from './Web';
