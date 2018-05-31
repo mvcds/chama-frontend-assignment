@@ -1,3 +1,5 @@
+import Todo from '../../Entities/Todo';
+
 const DEFAULTS = {
   todos: []
 }
@@ -17,6 +19,12 @@ class TodoList {
 
   get isCompleted () {
     return this.todos.every(isCompleted);
+  }
+
+  addTodo (text) {
+    const todo = new Todo({ text })
+
+    this.todos.push(todo);
   }
 }
 
