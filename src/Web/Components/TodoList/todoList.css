@@ -1,0 +1,23 @@
+.todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #FFFFFF;
+}
+
+.todo-list__item {
+  position: relative;
+  font-size: 2em;
+  border-bottom: 1px solid #EDEDED;
+  padding: 16px;
+  display: flex;
+}
+
+.todo-list__item:last-child {
+  border-bottom: none;
+}
+
+.todo-list__item-completion {
+  align-self: center;
+  margin: 0 8px 0 0;
+}

@@ -1,6 +1,7 @@
 .app {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .app__title {
@@ -30,7 +31,7 @@
 .app__new-todo {
   flex: 1;
   border: none;
-  margin: 0 8px 0 0;
+  margin: 0 0 0 8px;
   width: 100%;
   font-size: 2em;
   outline: none;

@@ -1,10 +1,14 @@
+const DEFAULTS = {
+  todos: []
+}
+
 function isCompleted (todo) {
-  return todo.isComplete;
+  return todo.isCompleted;
 }
 
 class TodoList {
   constructor (data) {
-    Object.assign(this, data);
+    Object.assign(this, DEFAULTS, data);
   }
 
   get length () {

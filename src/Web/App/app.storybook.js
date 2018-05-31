@@ -20,7 +20,8 @@ const QUANTITY = {
 const props = {
   onKeyDown: action('key down'),
   onChange: action('changes'),
-  onToggleAll: action('toggle todos')
+  onToggleAll: action('toggle todos'),
+  onToggle: action('toggle an item')
 }
 
 const todoSeed = lorem.words()

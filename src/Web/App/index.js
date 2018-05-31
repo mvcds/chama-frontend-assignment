@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TodoList from '../Components/TodoList'
+
 import './app.css';
 
 function ToogleAllTodos ({ todoList, onToggleAll }) {
@@ -15,12 +17,18 @@ function ToogleAllTodos ({ todoList, onToggleAll }) {
   )
 }
 
-function App ({ todo, todoList, onKeyDown, onChange, onToggleAll }) {
+function App ({ todo, todoList, onKeyDown, onChange, onToggleAll, onToggle }) {
   return (
     <div className="app">
       <header className="app__header">
         <h1 className="app__title">todos</h1>
+      </header>
+      <main>
         <div className="app__inputs">
+          <ToogleAllTodos
+            todoList={todoList}
+            onToggleAll={onToggleAll}
+          />
           <input
             className="app__new-todo"
             placeholder="What needs to be done?"
@@ -29,12 +37,9 @@ function App ({ todo, todoList, onKeyDown, onChange, onToggleAll }) {
             onChange={onChange}
             autoFocus
           />
-          <ToogleAllTodos
-            todoList={todoList}
-            onToggleAll={onToggleAll}
-          />
         </div>
-      </header>
+        <TodoList todos={todoList.todos} onToggle={onToggle} />
+      </main>
     </div>
   );
 }

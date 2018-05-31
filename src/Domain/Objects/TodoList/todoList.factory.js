@@ -23,5 +23,6 @@ function createList (quantity) {
 export default {
   Empty: create.bind(null, { todos: [] }),
   WithNonDoneTodos: createList.bind(Todo.NonCompleted),
-  WithAllDoneTodos: createList.bind(Todo.Completed)
+  WithAllDoneTodos: createList.bind(Todo.Completed),
+  WithRandomizedTodos: createList.bind(Todo.Random)
 }
