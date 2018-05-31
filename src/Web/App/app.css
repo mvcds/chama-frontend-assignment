@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.app__title {
+  font-size:  5em;
+  font-variant: all-small-caps;
+  margin: 24px;
+}
+
+.app__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app__new-todo {
+  padding: 16px;
+  border: none;
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 2em;
+  outline: none;
+  box-sizing: border-box;
+}
