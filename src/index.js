@@ -3,4 +3,4 @@
 // i.e. folders right below "src" are layer-like
 
 // eslint-disable-next-line
-import Web from './Web';
+import './Web';
