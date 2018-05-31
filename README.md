@@ -18,6 +18,9 @@ In Chama, our frontend stack consists of [React](https://facebook.github.io/reac
 Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a real-time experience. Because of this, we require that some features of Firebase are used in this assignment. There is a free-plan (default) that supports the requirements of this assignment (Hosting, Auth and real-time Database) and you should be able to start creating a project with you own Google account. Eezy peezy.
 
 ### Features
+[ ] Add TODO
+[ ] Edit TODO
+[ ] Complete TODO
 [ ] Sign-in/sign-out functionality using Firease Auth;
 [ ] Use Firebase real-time database to keep all the TODOs;
 [ ] Manage database state using Redux;
