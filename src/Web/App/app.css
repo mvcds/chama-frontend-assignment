@@ -15,12 +15,22 @@
   align-items: center;
 }
 
-.app__new-todo {
-  padding: 16px;
-  border: none;
+.app__inputs {
+  display: flex;
+  background: #FFFFFF;
   box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
-  position: relative;
+  padding: 16px;
+}
+
+.app__toogle-all {
+  align-self: center;
   margin: 0;
+}
+
+.app__new-todo {
+  flex: 1;
+  border: none;
+  margin: 0 8px 0 0;
   width: 100%;
   font-size: 2em;
   outline: none;

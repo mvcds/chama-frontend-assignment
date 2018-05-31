@@ -6,5 +6,10 @@ import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const EMPTY_TODO_LIST = {
+  length: 0,
+  isCompleted: false
+}
+
+ReactDOM.render(<App todoList={EMPTY_TODO_LIST} />, document.getElementById('root'));
 registerServiceWorker();
