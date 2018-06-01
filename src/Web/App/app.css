@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.app__footer {
+  padding: 8px;
+}
+
 .app__inputs {
   display: flex;
   background: #FFFFFF;

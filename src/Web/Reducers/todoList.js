@@ -1,10 +1,10 @@
-import TodoList from '../../Domain/Objects/TodoList';
+import TodoList from '../../Domain/Objects/TodoList/todoList.factory';
 
 const REDUCERS = {
   TOGGLE_TODO: function (state, { todo, isCompleted }) {
     const clone = state.clone();
 
-    clone.changeCompleteness(todo, isCompleted);
+    clone.editTodo(todo, { isCompleted });
 
     return clone;
   },
@@ -21,10 +21,17 @@ const REDUCERS = {
     clone.addTodo(text);
 
     return clone;
+  },
+  EDIT_TODO: function (state, { todo, text }) {
+    const clone = state.clone();
+
+    clone.editTodo(todo, { text });
+
+    return clone;
   }
 }
 
-const list = new TodoList()
+const list = TodoList.WithNonDoneTodos(5)
 
 function todoList (state = list, { type, payload }) {
   const reducer = REDUCERS[type]

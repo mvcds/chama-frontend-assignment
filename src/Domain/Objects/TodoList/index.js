@@ -39,12 +39,12 @@ class TodoList {
     this.todos.push(todo);
   }
 
-  changeCompleteness (todo, isCompleted) {
+  editTodo (todo, data) {
     const index = this.todos.findIndex(todo.isSame)
 
     const oldTodo = this.todos[index]
 
-    this.todos[index] = oldTodo.clone({ isCompleted })
+    this.todos[index] = oldTodo.clone(data)
   }
 
   clone () {

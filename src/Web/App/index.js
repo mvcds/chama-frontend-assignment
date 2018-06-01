@@ -25,6 +25,9 @@ function App ({ todo, onKeyDown, onChange }) {
         </div>
         <TodoList />
       </main>
+      <footer className="app__footer">
+        Create a TODO and double click on it to start its edition
+      </footer>
     </div>
   );
 }

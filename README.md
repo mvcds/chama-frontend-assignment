@@ -19,7 +19,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 
 ### Features
 * [X] Add TODO
-* [ ] Edit TODO
+* [X] Edit TODO
 * [X] Complete TODO
 * [ ] Sign-in/sign-out functionality using Firease Auth;
 * [ ] Use Firebase real-time database to keep all the TODOs;

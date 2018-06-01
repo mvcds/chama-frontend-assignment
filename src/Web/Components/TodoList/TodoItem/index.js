@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoItem ({ todo, onToggle }, index) {
+function StaticTodo ({ todo, onToggle, onStartEditing }) {
   return (
     <React.Fragment>
       <input
@@ -9,9 +9,31 @@ function TodoItem ({ todo, onToggle }, index) {
         onChange={onToggle}
         checked={todo.isCompleted}
       />
-      <span>{todo.text}</span>
+      <span onDoubleClick={onStartEditing}>
+        {todo.text}
+      </span>
     </React.Fragment>
   )
+}
+
+function EditableTodo ({ editedTodo, onKeyDown, onChange, onExitEditing }) {
+  return (
+    <input
+      className="todo-list__input"
+      placeholder="What needs to be done?"
+      value={editedTodo}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
+      onBlur={onExitEditing}
+      autoFocus
+    />
+  )
+}
+
+function TodoItem ({ isEditing, ...rest }) {
+  const Todo = isEditing ? EditableTodo : StaticTodo
+
+  return <Todo {...rest} />
 }
 
 export default TodoItem;
