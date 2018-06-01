@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import App from './index'
+import NewTodo from './index'
 
 const ENTER_KEY = 13;
 
@@ -9,24 +9,24 @@ function handleKeyDown (event) {
 
   event.preventDefault();
 
-  const todo = this.state.todo.trim();
+  const text = this.state.text.trim();
 
-  if (!todo) return;
+  if (!text) return;
 
-  this.props.addTodo(todo);
-  this.setState({ todo: '' });
+  this.props.addTodo(text);
+  this.setState({ text: '' });
 }
 
 function handleChange (event) {
-  this.setState({ todo: event.target.value });
+  this.setState({ text: event.target.value });
 }
 
-class AppState extends Component {
+class NewTodoState extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      todo: ''
+      text: ''
     }
 
     this.methods = {
@@ -37,7 +37,7 @@ class AppState extends Component {
 
   render () {
     return (
-      <App
+      <NewTodo
         {...this.props}
         {...this.state}
         {...this.methods}
@@ -46,4 +46,4 @@ class AppState extends Component {
   }
 }
 
-export default AppState;
+export default NewTodoState;

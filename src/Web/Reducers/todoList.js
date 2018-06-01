@@ -15,7 +15,7 @@ const REDUCERS = {
 
     return clone;
   },
-  CREATE_TODO: function (state, { text }) {
+  ADD_TODO: function (state, { text }) {
     const clone = state.clone();
 
     clone.addTodo(text);

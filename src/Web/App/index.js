@@ -1,11 +1,12 @@
 import React from 'react';
 
 import ToggleAllTodos from '../Components/ToggleAllTodos';
+import NewTodo from '../Components/NewTodo';
 import TodoList from '../Components/TodoList';
 
 import './app.css';
 
-function App ({ todo, onKeyDown, onChange }) {
+function App () {
   return (
     <div className="app">
       <header className="app__header">
@@ -14,14 +15,7 @@ function App ({ todo, onKeyDown, onChange }) {
       <main>
         <div className="app__inputs">
           <ToggleAllTodos />
-          <input
-            className="app__new-todo"
-            placeholder="What needs to be done?"
-            value={todo}
-            onKeyDown={onKeyDown}
-            onChange={onChange}
-            autoFocus
-          />
+          <NewTodo />
         </div>
         <TodoList />
       </main>

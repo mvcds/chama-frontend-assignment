@@ -1,0 +1,9 @@
+.new-todo__text {
+  flex: 1;
+  border: none;
+  margin: 0 0 0 8px;
+  width: 100%;
+  font-size: 2em;
+  outline: none;
+  box-sizing: border-box;
+}

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
-import App from './app.state';
+import NewTodo from './newTodo.state';
 
 function addTodo (dispatch, text) {
   dispatch({
-    type: 'CREATE_TODO',
+    type: 'ADD_TODO',
     payload: {
       text
     }
@@ -20,4 +20,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   null,
   mapDispatchToProps
-)(App);
+)(NewTodo);
