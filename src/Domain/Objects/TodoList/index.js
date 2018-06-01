@@ -32,9 +32,7 @@ class TodoList {
 
     const oldTodo = this.todos[index]
 
-    const data = Object.assign({}, oldTodo, { isCompleted })
-
-    this.todos[index] = new Todo(data)
+    this.todos[index] = oldTodo.clone({ isCompleted })
   }
 }
 
