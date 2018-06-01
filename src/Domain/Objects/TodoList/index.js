@@ -1,15 +1,7 @@
 import Todo from '../../Entities/Todo';
 
-const DEFAULTS = {
-  todos: []
-}
-
 function isCompleted (todo) {
   return todo.isCompleted;
-}
-
-function cloneTodo (todo) {
-  return todo.clone()
 }
 
 function toogleAll (todo) {
@@ -20,13 +12,21 @@ function toogleAll (todo) {
   return clone;
 }
 
+function addToMapping (map, todo) {
+  return map.set(todo.id, todo);
+}
+
+function createMap (todos) {
+  return todos.reduce(addToMapping, new Map());
+}
+
 class TodoList {
-  constructor (data) {
-    Object.assign(this, DEFAULTS, data);
+  constructor ({ todos = [] }) {
+    this.__todos = todos.reduce(addToMapping, new Map());
   }
 
-  get length () {
-    return this.todos.length;
+  get todos () {
+    return Array.from(this.__todos.values());
   }
 
   get isCompleted () {
@@ -34,32 +34,29 @@ class TodoList {
   }
 
   addTodo (text) {
-    const todo = new Todo({ text })
+    const todo = new Todo({ text });
 
-    this.todos.push(todo);
+    this.__todos.set(todo.id, todo);
   }
 
   editTodo (todo, data) {
-    const index = this.todos.findIndex(todo.isSame)
+    const oldTodo = this.__todos.get(todo.id);
 
-    const oldTodo = this.todos[index]
+    if (!oldTodo) return;
 
-    this.todos[index] = oldTodo.clone(data)
+    this.__todos.set(todo.id, todo.clone(data));
   }
 
   clone () {
     const { todos } = this
 
-    return new TodoList({
-      ...this,
-      todos: todos.map(cloneTodo)
-    })
+    return new TodoList({ ...this, todos })
   }
 
   toggleAll (isCompleted) {
     const todos = this.todos.map(toogleAll, isCompleted);
 
-    this.todos = todos;
+    this.__todos = createMap(todos);
   }
 }
 
