@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
 
-const list = TodoList.WithNonDoneTodos(1)
+const list = TodoList.WithRandomizedTodos(5)
 
 ReactDOM.render(<App todoList={list} />, document.getElementById('root'));
 registerServiceWorker();

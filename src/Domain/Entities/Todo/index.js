@@ -8,7 +8,7 @@ function isSame ({ id }) {
 
 class Todo {
   constructor (data) {
-    const id = new Date().getTime()
+    const id = data.id || new Date().getTime().toString();
 
     Object.assign(this, DEFAULTS, data, { id });
 
