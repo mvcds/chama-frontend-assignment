@@ -1,0 +1,4 @@
+{
+  "name": "ToggleAllTodos",
+  "main": "toggleAllTodos.redux.js"
+}

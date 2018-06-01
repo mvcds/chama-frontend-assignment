@@ -1,15 +1,15 @@
 import React from 'react';
 
-function TodoItem ({ text, isCompleted, onToggle }, index) {
+function TodoItem ({ todo, onToggle }, index) {
   return (
     <React.Fragment>
       <input
         className="todo-list__item-completion"
         type="checkbox"
         onChange={onToggle}
-        checked={isCompleted}
+        checked={todo.isCompleted}
       />
-      <span>{text}</span>
+      <span>{todo.text}</span>
     </React.Fragment>
   )
 }

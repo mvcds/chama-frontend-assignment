@@ -23,11 +23,6 @@
   padding: 16px;
 }
 
-.app__toogle-all {
-  align-self: center;
-  margin: 0;
-}
-
 .app__new-todo {
   flex: 1;
   border: none;

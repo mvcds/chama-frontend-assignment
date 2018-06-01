@@ -2,24 +2,16 @@ import React, { Component } from 'react';
 
 import TodoItem from './index'
 
-function handleToggle (event) {
-  const isCompleted = event.target.checked;
-
-  this.setState({ isCompleted });
-  this.props.onToggle(this.props.todo, isCompleted);
+function handleToggle (todo, event) {
+  this.props.onToggle(todo, event.target.checked);
 }
 
 class TodoItemState extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      text: props.todo.text,
-      isCompleted: props.todo.isCompleted
-    }
-
     this.methods = {
-      onToggle: handleToggle.bind(this)
+      onToggle: handleToggle.bind(this, props.todo)
     }
   }
 
@@ -27,7 +19,6 @@ class TodoItemState extends Component {
     return (
       <TodoItem
         {...this.props}
-        {...this.state}
         {...this.methods}
       />
     )

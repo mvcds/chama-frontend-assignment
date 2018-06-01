@@ -15,7 +15,7 @@ class Todo {
     return this.id === id
   }
 
-  clone (data) {
+  clone (data = {}) {
     const { id } = this
 
     const cloned = Object.assign({}, this, data, { id })

@@ -1,23 +1,11 @@
 import React from 'react';
 
-import TodoList from '../Components/TodoList'
+import ToggleAllTodos from '../Components/ToggleAllTodos';
+import TodoList from '../Components/TodoList';
 
 import './app.css';
 
-function ToogleAllTodos ({ todoList, onToggleAll }) {
-  if (!todoList.length) return null;
-
-  return (
-    <input
-      className="app__toogle-all"
-      type="checkbox"
-      onChange={onToggleAll}
-      checked={todoList.isCompleted}
-    />
-  )
-}
-
-function App ({ todo, todoList, onKeyDown, onChange, onToggleAll, onToggle }) {
+function App ({ todo, onKeyDown, onChange }) {
   return (
     <div className="app">
       <header className="app__header">
@@ -25,10 +13,7 @@ function App ({ todo, todoList, onKeyDown, onChange, onToggleAll, onToggle }) {
       </header>
       <main>
         <div className="app__inputs">
-          <ToogleAllTodos
-            todoList={todoList}
-            onToggleAll={onToggleAll}
-          />
+          <ToggleAllTodos />
           <input
             className="app__new-todo"
             placeholder="What needs to be done?"
@@ -38,7 +23,7 @@ function App ({ todo, todoList, onKeyDown, onChange, onToggleAll, onToggle }) {
             autoFocus
           />
         </div>
-        <TodoList todos={todoList.todos} onToggle={onToggle} />
+        <TodoList />
       </main>
     </div>
   );

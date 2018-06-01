@@ -7,7 +7,7 @@ import './todoList.css';
 function asItem (todo, index) {
   return (
     <li key={todo.id} className="todo-list__item">
-      <TodoItem todo={todo} onToggle={this.onToggle} />
+      <TodoItem {...this} todo={todo} />
     </li>
   )
 }
