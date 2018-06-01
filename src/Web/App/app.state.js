@@ -21,8 +21,8 @@ function handleChange (event) {
   this.setState({ todo: event.target.value });
 }
 
-function handleToggle (event) {
-  console.log(`not implemented`)
+function handleToggle (todo, event) {
+  this.props.todoList.changeCompleteness(todo, event)
 }
 
 class AppState extends Component {

@@ -1,6 +1,8 @@
 import { Factory } from 'rosie';
 import { lorem, random } from 'faker';
 
+import Todo from './index';
+
 const factory = new Factory()
   .attr('id', random.uuid)
   .attr('text', lorem.words)
@@ -9,7 +11,7 @@ const factory = new Factory()
 function create (data) {
   const fixture = factory.build(data);
 
-  return fixture;
+  return new Todo(fixture);
 }
 
 export default {

@@ -26,6 +26,16 @@ class TodoList {
 
     this.todos.push(todo);
   }
+
+  changeCompleteness (todo, isCompleted) {
+    const index = this.todos.findIndex(todo.isSame)
+
+    const oldTodo = this.todos[index]
+
+    const data = Object.assign({}, oldTodo, { isCompleted })
+
+    this.todos[index] = new Todo(data)
+  }
 }
 
 export default TodoList;

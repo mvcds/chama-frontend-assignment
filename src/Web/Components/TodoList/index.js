@@ -1,19 +1,13 @@
 import React from 'react';
 
+import TodoItem from './TodoItem'
+
 import './todoList.css';
 
-function TodoItem (todo, index) {
+function asItem (todo, index) {
   return (
     <li key={todo.id} className="todo-list__item">
-      <input
-        className="todo-list__item-completion"
-        type="checkbox"
-        onChange={this.onToggle.bind(todo)}
-        checked={todo.isCompleted}
-      />
-      <span>
-        {todo.text}
-      </span>
+      <TodoItem todo={todo} onToggle={this.onToggle} />
     </li>
   )
 }
@@ -21,7 +15,7 @@ function TodoItem (todo, index) {
 function TodoList ({ todos, onToggle }) {
   return (
     <ul className="todo-list">
-      {todos.map(TodoItem, { onToggle })}
+      {todos.map(asItem, { onToggle })}
     </ul>
   )
 }
