@@ -8,16 +8,14 @@ function isCompleted (todo) {
   return todo.isCompleted;
 }
 
-function toogleAll (todo) {
-  const clone = todo.clone();
-
-  clone.isCompleted = this;
-
-  return clone;
-}
-
 function addToMapping (map, todo) {
   return map.set(todo.id, todo);
+}
+
+function clone () {
+  const todos = Array.from(this.__todos.values());
+
+  return new TodoList({ ...this, todos });
 }
 
 class TodoList {
@@ -38,29 +36,37 @@ class TodoList {
   }
 
   addTodo (text) {
+    const doppelganger = clone.apply(this);
+
     const todo = new Todo({ text });
 
-    this.__todos.set(todo.id, todo);
+    doppelganger.__todos.set(todo.id, todo);
+
+    return doppelganger;
   }
 
   editTodo (todo, data) {
-    const oldTodo = this.__todos.get(todo.id);
+    const canEdit = this.__todos.has(todo.id);
 
-    if (!oldTodo) return;
+    if (!canEdit) return this;
+
+    const doppelganger = clone.apply(this);
+
+    const oldTodo = doppelganger.__todos.get(todo.id);
 
     Object.assign(oldTodo, data);
-  }
 
-  clone () {
-    const todos = Array.from(this.__todos.values());
-
-    return new TodoList({ ...this, todos });
+    return doppelganger;
   }
 
   toggleAll (isCompleted) {
+    const doppelganger = clone.apply(this);
+
     for (const [, todo] of doppelganger.__todos) {
       Object.assign(todo, { isCompleted });
     }
+
+    return doppelganger;
   }
 }
 

@@ -2,32 +2,16 @@ import TodoList from '../../Domain/Objects/TodoList/todoList.factory';
 
 const REDUCERS = {
   TOGGLE_TODO: function (state, { todo, isCompleted }) {
-    const clone = state.clone();
-
-    clone.editTodo(todo, { isCompleted });
-
-    return clone;
+    return state.editTodo(todo, { isCompleted });
   },
   TOGGLE_ALL: function (state, { isCompleted }) {
-    const clone = state.clone();
-
-    clone.toggleAll(isCompleted);
-
-    return clone;
+    return state.toggleAll(isCompleted);
   },
   ADD_TODO: function (state, { text }) {
-    const clone = state.clone();
-
-    clone.addTodo(text);
-
-    return clone;
+    return state.addTodo(text);
   },
   EDIT_TODO: function (state, { todo, text }) {
-    const clone = state.clone();
-
-    clone.editTodo(todo, { text });
-
-    return clone;
+    return state.editTodo(todo, { text });
   }
 }
 
