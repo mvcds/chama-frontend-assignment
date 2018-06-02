@@ -43,7 +43,7 @@ function DescSort (a, b) {
 
 class TodoList {
   constructor (data) {
-    const { todos, ...rest } = Object.assign({}, DEFAULTS, data)
+    const { todos, completed, isCompleted, __todos, __arrayOfTodos, ...rest } = Object.assign({}, DEFAULTS, data)
 
     Object.assign(this, rest);
 
@@ -51,11 +51,15 @@ class TodoList {
   }
 
   get todos () {
+    if (this.__arrayOfTodos) return this.__arrayOfTodos;
+
     const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
 
-    return Array.from(this.__todos.values())
+    this.__arrayOfTodos = Array.from(this.__todos.values())
       .reduce(setPriority, [])
       .sort(sorter);
+
+    return this.__arrayOfTodos;
   }
 
   get completed () {
@@ -119,6 +123,8 @@ class TodoList {
     for (const todo of doppelganger.completed) {
       Object.assign(todo, DESTROY);
     }
+
+    doppelganger.__arrayOfTodos = undefined;
 
     return doppelganger;
   }
