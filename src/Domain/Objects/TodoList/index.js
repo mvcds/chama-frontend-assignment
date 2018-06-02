@@ -12,8 +12,14 @@ function isCompleted (todo) {
   return todo.isCompleted;
 }
 
-function isActive (todo) {
-  return !todo.isDeleted;
+function setPriority (list, todo) {
+  if (todo.isDeleted) return list;
+
+  const last = list[list.length - 1];
+
+  todo.priority = (last ? last.priority : 0) + 1;
+
+  return [ ...list, todo ];
 }
 
 function addToMapping (map, todo) {
@@ -47,7 +53,7 @@ class TodoList {
     const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
 
     return Array.from(this.__todos.values())
-      .filter(isActive)
+      .reduce(setPriority, [])
       .sort(sorter);
   }
 
@@ -62,9 +68,7 @@ class TodoList {
   addTodo (text) {
     const doppelganger = clone.apply(this);
 
-    const priority = doppelganger.todos.length + 1;
-
-    const todo = new Todo({ text, priority });
+    const todo = new Todo({ text });
 
     doppelganger.__todos.set(todo.id, todo);
 
