@@ -1,0 +1,4 @@
+{
+  "name": "AuthGateway",
+  "main": "authGateway.redux.js"
+}
