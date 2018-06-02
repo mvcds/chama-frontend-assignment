@@ -1,9 +1,6 @@
 import React from 'react';
 
-import ToggleAllTodos from '../Components/ToggleAllTodos';
-import NewTodo from '../Components/NewTodo';
-import TodoList from '../Components/TodoList';
-import TodoListFooter from '../Components/TodoListFooter';
+import TodoApp from './TodoApp';
 
 import './app.css';
 
@@ -13,17 +10,7 @@ function App () {
       <header className="app__header">
         <h1 className="app__title">todos</h1>
       </header>
-      <main>
-        <div className="app__inputs">
-          <ToggleAllTodos />
-          <NewTodo />
-        </div>
-        <TodoList />
-        <TodoListFooter />
-      </main>
-      <footer className="app__footer">
-        Create a TODO and double click on it to start its edition
-      </footer>
+      <TodoApp />
     </div>
   );
 }
