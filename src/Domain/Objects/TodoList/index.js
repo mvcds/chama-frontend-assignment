@@ -2,6 +2,7 @@ import Todo from '../../Entities/Todo';
 
 const ASCENDENT = 'asc'
 const DESCENDENT = 'desc'
+const DESTROY = { isDeleted: true }
 
 const DEFAULTS = {
   todos: [],
@@ -90,7 +91,7 @@ class TodoList {
   }
 
   deleteTodo (todo) {
-    return this.editTodo(todo, { isDeleted: true });
+    return this.editTodo(todo, DESTROY);
   }
 
   toggleAll (isCompleted) {
@@ -114,10 +115,9 @@ class TodoList {
 
   clearCompleted () {
     const doppelganger = clone.apply(this);
-    const data = { isDeleted: true };
 
     for (const todo of doppelganger.completed) {
-      Object.assign(todo, data);
+      Object.assign(todo, DESTROY);
     }
 
     return doppelganger;
