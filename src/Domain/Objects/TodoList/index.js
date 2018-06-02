@@ -10,7 +10,11 @@ const DEFAULTS = {
 }
 
 function isCompleted (todo) {
-  return todo.isCompleted;
+  return isActive(todo) && todo.isCompleted;
+}
+
+function isActive (todo) {
+  return !todo.isDeleted;
 }
 
 function setPriority (list, todo) {
@@ -28,7 +32,7 @@ function addToMapping (map, todo) {
 }
 
 function clone () {
-  const todos = Array.from(this.__todos.values());
+  const todos = Array.from(this.__rawTodos.values());
 
   return new TodoList({ ...this, todos });
 }
@@ -42,28 +46,38 @@ function DescSort (a, b) {
 }
 
 class TodoList {
-  constructor (data) {
-    const { todos, completed, isCompleted, __todos, __arrayOfTodos, ...rest } = Object.assign({}, DEFAULTS, data)
+  constructor (raw) {
+    const data = Object.assign({}, DEFAULTS, raw)
+
+    const {
+      todos, completed, active, isCompleted,
+      __rawTodos, __todos,
+      ...rest
+    } = data
 
     Object.assign(this, rest);
 
-    this.__todos = todos.reduce(addToMapping, new Map());
+    this.__rawTodos = todos.reduce(addToMapping, new Map());
   }
 
   get todos () {
-    if (this.__arrayOfTodos) return this.__arrayOfTodos;
+    if (this.__todos) return this.__todos;
 
     const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
 
-    this.__arrayOfTodos = Array.from(this.__todos.values())
+    this.__todos = Array.from(this.__rawTodos.values())
       .reduce(setPriority, [])
       .sort(sorter);
 
-    return this.__arrayOfTodos;
+    return this.__todos;
   }
 
   get completed () {
     return this.todos.filter(isCompleted);
+  }
+
+  get active () {
+    return this.todos.filter(isActive);
   }
 
   get isCompleted () {
@@ -75,19 +89,19 @@ class TodoList {
 
     const todo = new Todo({ text });
 
-    doppelganger.__todos.set(todo.id, todo);
+    doppelganger.__rawTodos.set(todo.id, todo);
 
     return doppelganger;
   }
 
   editTodo (todo, data) {
-    const canEdit = this.__todos.has(todo.id);
+    const canEdit = this.__rawTodos.has(todo.id);
 
     if (!canEdit) return this;
 
     const doppelganger = clone.apply(this);
 
-    const oldTodo = doppelganger.__todos.get(todo.id);
+    const oldTodo = doppelganger.__rawTodos.get(todo.id);
 
     Object.assign(oldTodo, data);
 
@@ -102,7 +116,7 @@ class TodoList {
     const doppelganger = clone.apply(this);
     const data = { isCompleted };
 
-    for (const [, todo] of doppelganger.__todos) {
+    for (const todo of doppelganger.active) {
       Object.assign(todo, data);
     }
 
@@ -124,7 +138,7 @@ class TodoList {
       Object.assign(todo, DESTROY);
     }
 
-    doppelganger.__arrayOfTodos = undefined;
+    doppelganger.__todos = undefined;
 
     return doppelganger;
   }
