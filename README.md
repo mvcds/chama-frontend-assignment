@@ -26,7 +26,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 * [ ] Manage database state using Redux;
 * [ ] Assign priority to a TODO and order them by highest to lowest priority;
 * [ ] Set a due time. Add real-time visual and auditive hints to the TODO item that indicate that the due time is near and has passed;
-* [ ] Host working app in a Firebase Hosting environment.
+* [X] Host working app in a Firebase Hosting environment.
 
 # Hints
 * You don't need to spend time creating a dev/build environment, using [react-create-app](https://github.com/facebookincubator/create-react-app) (and other alike tools) is totally ok!

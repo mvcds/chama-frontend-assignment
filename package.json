@@ -1,5 +1,6 @@
 {
   "name": "chama-frontend-assignment",
+  "homepage": "https://chama-frontend-assignment.firebaseapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +16,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "yarn build && firebase deploy"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
@@ -26,6 +28,7 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "faker": "^4.1.0",
+    "firebase-tools": "^3.18.5",
     "rosie": "^2.0.1"
   }
 }
