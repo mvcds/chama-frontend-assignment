@@ -48,18 +48,18 @@ class TodoList {
 
     if (!oldTodo) return;
 
-    this.__todos.set(todo.id, todo.clone(data));
+    Object.assign(oldTodo, data);
   }
 
   clone () {
-    const { todos } = this
+    const todos = Array.from(this.__todos.values());
 
-    return new TodoList({ ...this, todos })
+    return new TodoList({ ...this, todos });
   }
 
   toggleAll (isCompleted) {
-    for (const [id, todo] of this.__todos) {
-      this.__todos.set(id, todo.clone({ isCompleted }));
+    for (const [, todo] of doppelganger.__todos) {
+      Object.assign(todo, { isCompleted });
     }
   }
 }

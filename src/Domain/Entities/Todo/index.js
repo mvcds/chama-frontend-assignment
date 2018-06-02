@@ -8,14 +8,6 @@ class Todo {
 
     Object.assign(this, DEFAULTS, data, { id });
   }
-
-  clone (data = {}) {
-    const { id } = this
-
-    const cloned = Object.assign({}, this, data, { id })
-
-    return new Todo(cloned)
-  }
 }
 
 export default Todo;
