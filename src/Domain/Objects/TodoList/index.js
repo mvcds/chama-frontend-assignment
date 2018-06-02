@@ -1,5 +1,9 @@
 import Todo from '../../Entities/Todo';
 
+const DEFAULTS = {
+  todos: []
+}
+
 function isCompleted (todo) {
   return todo.isCompleted;
 }
@@ -16,12 +20,12 @@ function addToMapping (map, todo) {
   return map.set(todo.id, todo);
 }
 
-function createMap (todos) {
-  return todos.reduce(addToMapping, new Map());
-}
-
 class TodoList {
-  constructor ({ todos = [] }) {
+  constructor (data) {
+    const { todos, ...rest } = Object.assign({}, DEFAULTS, data)
+
+    Object.assign(this, rest);
+
     this.__todos = todos.reduce(addToMapping, new Map());
   }
 
@@ -54,9 +58,9 @@ class TodoList {
   }
 
   toggleAll (isCompleted) {
-    const todos = this.todos.map(toogleAll, isCompleted);
-
-    this.__todos = createMap(todos);
+    for (const [id, todo] of this.__todos) {
+      this.__todos.set(id, todo.clone({ isCompleted }));
+    }
   }
 }
 
