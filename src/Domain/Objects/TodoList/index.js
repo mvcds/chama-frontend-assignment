@@ -85,7 +85,7 @@ class TodoList {
   }
 
   addTodo (text) {
-    const doppelganger = clone.apply(this);
+    const doppelganger = clone.call(this);
 
     const todo = new Todo({ text });
 
@@ -99,7 +99,7 @@ class TodoList {
 
     if (!canEdit) return this;
 
-    const doppelganger = clone.apply(this);
+    const doppelganger = clone.call(this);
 
     const oldTodo = doppelganger.__rawTodos.get(todo.id);
 
@@ -113,7 +113,7 @@ class TodoList {
   }
 
   toggleAll (isCompleted) {
-    const doppelganger = clone.apply(this);
+    const doppelganger = clone.call(this);
     const data = { isCompleted };
 
     for (const todo of doppelganger.active) {
@@ -124,7 +124,7 @@ class TodoList {
   }
 
   toggleSorter () {
-    const doppelganger = clone.apply(this);
+    const doppelganger = clone.call(this);
 
     doppelganger.sort = doppelganger.sort === ASCENDENT ? 'desc' : ASCENDENT;
 
@@ -132,7 +132,7 @@ class TodoList {
   }
 
   clearCompleted () {
-    const doppelganger = clone.apply(this);
+    const doppelganger = clone.call(this);
 
     for (const todo of doppelganger.completed) {
       Object.assign(todo, DESTROY);
