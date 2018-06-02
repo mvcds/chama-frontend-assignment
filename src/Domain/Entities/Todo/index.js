@@ -7,12 +7,6 @@ class Todo {
     const id = data.id || new Date().getTime().toString();
 
     Object.assign(this, DEFAULTS, data, { id });
-
-    this.isSame = this.isSame.bind(this)
-  }
-
-  isSame ({ id }) {
-    return this.id === id
   }
 
   clone (data = {}) {
