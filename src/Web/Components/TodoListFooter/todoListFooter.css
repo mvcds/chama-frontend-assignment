@@ -1,0 +1,43 @@
+.todo-list-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #FFFFFF;
+  padding: 8px 16px;
+}
+
+.todo-list-footer button {
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: .8em;
+  border: 0;
+  padding: 0;
+}
+
+.todo-list-footer button:hover {
+  text-decoration: underline;
+}
+
+.todo-list-footer button:focus {
+  outline: none;
+}
+
+.todo-list-footer__numbers,
+.todo-list-footer__config,
+.todo-list-footer__clear-button {
+  flex: 1;
+  margin: 0 8px;
+}
+
+.todo-list-footer__numbers {
+  font-size: .8em;
+  align-self: center;
+}
+
+.todo-list-footer__config {
+  text-align: center;
+}
+
+.todo-list-footer__clear-button {
+  text-align: right;
+}

@@ -5,7 +5,8 @@ import Todo from '../../Entities/Todo/todo.factory';
 import TodoList from './index';
 
 const factory = new Factory()
-  .attr('todos', []);
+  .attr('todos', [])
+  .attr('sort', 'desc');
 
 function create (data) {
   const fixture = factory.build(data);

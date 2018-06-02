@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
 import { lorem } from 'faker';
 
 import TodoItem from './index';
@@ -30,10 +30,12 @@ storiesOf('Organisms / Todo Item', module)
   .add('Static', () => {
     const textTodo = text('To do', todoSeed)
     const isCompleted = boolean('Completed?', false)
+    const priority = number('Priority', MIN, QUANTITY)
 
     const todo = {
       text: textTodo,
-      isCompleted
+      isCompleted,
+      priority
     }
 
     return (

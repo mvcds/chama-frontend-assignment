@@ -12,10 +12,10 @@ function asItem (todo, index) {
   )
 }
 
-function TodoList ({ todos, onToggle, onEdit }) {
+function TodoList ({ todos, onToggle, onEdit, onDelete }) {
   return (
     <ul className="todo-list">
-      {todos.map(asItem, { onToggle, onEdit })}
+      {todos.map(asItem, { onToggle, onEdit, onDelete })}
     </ul>
   )
 }

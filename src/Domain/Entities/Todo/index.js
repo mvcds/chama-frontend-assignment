@@ -1,5 +1,6 @@
 const DEFAULTS = {
-  isCompleted: false
+  isCompleted: false,
+  isDeleted: false
 }
 
 class Todo {

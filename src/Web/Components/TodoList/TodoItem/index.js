@@ -9,8 +9,14 @@ function StaticTodo ({ todo, onToggle, onStartEditing }) {
         onChange={onToggle}
         checked={todo.isCompleted}
       />
-      <span onDoubleClick={onStartEditing}>
+      <span
+        className="todo-list__item-text"
+        onDoubleClick={onStartEditing}
+      >
         {todo.text}
+      </span>
+      <span className="todo-list__item-priority">
+        {todo.priority}
       </span>
     </React.Fragment>
   )
@@ -20,7 +26,7 @@ function EditableTodo ({ editedTodo, onKeyDown, onChange, onExitEditing }) {
   return (
     <input
       className="todo-list__input"
-      placeholder="What needs to be done?"
+      placeholder="Empties get erased"
       value={editedTodo}
       onKeyDown={onKeyDown}
       onChange={onChange}

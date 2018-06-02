@@ -1,11 +1,19 @@
 import Todo from '../../Entities/Todo';
 
+const ASCENDENT = 'asc'
+const DESCENDENT = 'desc'
+
 const DEFAULTS = {
-  todos: []
+  todos: [],
+  sort: DESCENDENT
 }
 
 function isCompleted (todo) {
   return todo.isCompleted;
+}
+
+function isActive (todo) {
+  return !todo.isDeleted;
 }
 
 function addToMapping (map, todo) {
@@ -18,6 +26,14 @@ function clone () {
   return new TodoList({ ...this, todos });
 }
 
+function AscSort (a, b) {
+  return a.priority - b.priority;
+}
+
+function DescSort (a, b) {
+  return AscSort(b, a);
+}
+
 class TodoList {
   constructor (data) {
     const { todos, ...rest } = Object.assign({}, DEFAULTS, data)
@@ -28,7 +44,15 @@ class TodoList {
   }
 
   get todos () {
-    return Array.from(this.__todos.values());
+    const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
+
+    return Array.from(this.__todos.values())
+      .filter(isActive)
+      .sort(sorter);
+  }
+
+  get completed () {
+    return this.todos.filter(isCompleted);
   }
 
   get isCompleted () {
@@ -38,7 +62,9 @@ class TodoList {
   addTodo (text) {
     const doppelganger = clone.apply(this);
 
-    const todo = new Todo({ text });
+    const priority = doppelganger.todos.length + 1;
+
+    const todo = new Todo({ text, priority });
 
     doppelganger.__todos.set(todo.id, todo);
 
@@ -59,11 +85,35 @@ class TodoList {
     return doppelganger;
   }
 
+  deleteTodo (todo) {
+    return this.editTodo(todo, { isDeleted: true });
+  }
+
   toggleAll (isCompleted) {
     const doppelganger = clone.apply(this);
+    const data = { isCompleted };
 
     for (const [, todo] of doppelganger.__todos) {
-      Object.assign(todo, { isCompleted });
+      Object.assign(todo, data);
+    }
+
+    return doppelganger;
+  }
+
+  toggleSorter () {
+    const doppelganger = clone.apply(this);
+
+    doppelganger.sort = doppelganger.sort === ASCENDENT ? 'desc' : ASCENDENT;
+
+    return doppelganger;
+  }
+
+  clearCompleted () {
+    const doppelganger = clone.apply(this);
+    const data = { isDeleted: true };
+
+    for (const todo of doppelganger.completed) {
+      Object.assign(todo, data);
     }
 
     return doppelganger;

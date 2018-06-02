@@ -12,6 +12,15 @@ const REDUCERS = {
   },
   EDIT_TODO: function (state, { todo, text }) {
     return state.editTodo(todo, { text });
+  },
+  DELETE_TODO: function (state, { todo }) {
+    return state.deleteTodo(todo);
+  },
+  TOGGLE_SORTER: function (state) {
+    return state.toggleSorter()
+  },
+  CLEAR_COMPLETED_TODOS: function (state) {
+    return state.clearCompleted()
   }
 }
 

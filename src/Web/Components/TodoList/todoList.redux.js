@@ -22,6 +22,15 @@ function editTodo (dispatch, todo, text) {
   })
 }
 
+function deleteTodo (dispatch, todo) {
+  dispatch({
+    type: 'DELETE_TODO',
+    payload: {
+      todo
+    }
+  })
+}
+
 function mapStateToProps ({ todoList: { todos } }) {
   return {
     todos
@@ -31,7 +40,8 @@ function mapStateToProps ({ todoList: { todos } }) {
 function mapDispatchToProps (dispatch) {
   return {
     onToggle: toggleTodo.bind(null, dispatch),
-    onEdit: editTodo.bind(null, dispatch)
+    onEdit: editTodo.bind(null, dispatch),
+    onDelete: deleteTodo.bind(null, dispatch)
   };
 }
 

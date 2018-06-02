@@ -23,7 +23,11 @@ function mutate () {
 
   const { todo } = this.props
 
-  if (!!text && text !== todo.text) this.props.onEdit(todo, text);
+  if (!text) {
+    this.props.onDelete(todo);
+  } else if (text !== todo.text) {
+    this.props.onEdit(todo, text);
+  }
 
   closeForEdition.call(this);
 }
