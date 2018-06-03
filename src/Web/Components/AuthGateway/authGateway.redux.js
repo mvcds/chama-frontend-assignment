@@ -14,7 +14,8 @@ function changeAuthState (dispatch, user) {
 function mapStateToProps ({ firebase: { auth, isLoggedIn } }) {
   return {
     auth,
-    isLoggedIn
+    isLoggedIn,
+    onLogout: auth.signOut
   };
 }
 

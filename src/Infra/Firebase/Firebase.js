@@ -2,6 +2,7 @@ function clone () {
   const { auth } = this;
 
   const data = {
+    ...this,
     auth: () => auth
   }
 
@@ -9,24 +10,26 @@ function clone () {
 }
 
 class Firebase {
-  constructor({ auth }) {
-    Object.assign(this, { auth: auth() });
-  }
+  constructor(data) {
+    const { auth, isLoggedIn = false } = data
 
-  get isLoggedIn () {
-    return !!this.auth.currentUser;
+    Object.assign(this, { auth: auth(), isLoggedIn });
   }
 
   login () {
-    return clone.call(this);
+    const doppleganger = clone.call(this);
+
+    doppleganger.isLoggedIn = true;
+
+    return doppleganger;
   }
 
   logout () {
-    if (this.auth.currentUser === null) return this;
+    const doppleganger = clone.call(this);
 
-    this.auth.signOut();
+    doppleganger.isLoggedIn = false;
 
-    return clone.call(this);
+    return doppleganger;
   }
 }
 

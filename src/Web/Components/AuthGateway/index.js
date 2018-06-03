@@ -11,6 +11,12 @@ const uiConfig = {
   }
 };
 
+function Logout ({ onLogout }) {
+  return (
+    <button onClick={onLogout}>Logout</button>
+  )
+}
+
 class AuthGateway extends Component {
   componentWillMount() {
     const { auth, onAuthStateChanged } = this.props
@@ -23,12 +29,14 @@ class AuthGateway extends Component {
   }
 
   render () {
-    if (this.props.isLoggedIn) return null;
+    const { isLoggedIn, auth, onLogout } = this.props;
+
+    if (isLoggedIn) return <Logout onLogout={onLogout} />
 
     return (
       <StyledFirebaseAuth
         uiConfig={uiConfig}
-        firebaseAuth={this.props.auth}
+        firebaseAuth={auth}
       />
     )
   }

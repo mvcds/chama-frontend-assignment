@@ -10,7 +10,7 @@ const REDUCERS = {
   }
 }
 
-function firebase (state = Firebase, { type, payload }) {
+function firebase (state = Firebase, { type, payload } = {}) {
   const reducer = REDUCERS[type]
 
   return reducer ? reducer(state, payload) : state;
