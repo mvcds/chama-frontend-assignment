@@ -3,12 +3,10 @@ import Firebase from '../../Infra/Firebase';
 import User from '../../Domain/Entities/User';
 
 const REDUCERS = {
-  AUTH_CHANGE: (state, { user: rawUser }) => {
-    if (!rawUser) return state.logout();
+  AUTH_CHANGE: (state, { user }) => {
+    if (!user) return state.logout();
 
-    const user = new User(rawUser);
-
-    return state.login(user);
+    return state.login();
   }
 }
 

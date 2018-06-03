@@ -12,7 +12,7 @@ const uiConfig = {
 };
 
 class AuthGateway extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { auth, onAuthStateChanged } = this.props
 
     this.unregisterAuthObserver = auth.onAuthStateChanged(onAuthStateChanged);
@@ -23,7 +23,7 @@ class AuthGateway extends Component {
   }
 
   render () {
-    if (this.props.isSignedUp) return null;
+    if (this.props.isLoggedIn) return null;
 
     return (
       <StyledFirebaseAuth

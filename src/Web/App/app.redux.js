@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 
 import App from './index';
 
-function mapStateToProps ({ firebase: { isSignedUp } }) {
+function mapStateToProps ({ firebase: { isLoggedIn } }) {
   return {
-    isSignedUp
+    isLoggedIn
   };
 }
 

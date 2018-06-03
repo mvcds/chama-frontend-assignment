@@ -6,8 +6,8 @@ import TodoApp from './TodoApp';
 
 import './app.css';
 
-function App ({ isSignedUp }) {
-  const Main = isSignedUp ? TodoApp : AuthGateway
+function App ({ isLoggedIn }) {
+  const Main = isLoggedIn ? TodoApp : AuthGateway
 
   return (
     <div className="app">

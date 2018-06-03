@@ -1,29 +1,32 @@
-function clone (user) {
+function clone () {
   const { auth } = this;
 
   const data = {
-    auth: () => auth,
-    user
+    auth: () => auth
   }
 
   return new Firebase(data);
 }
 
 class Firebase {
-  constructor({ auth, user }) {
-    Object.assign(this, { auth: auth(), user });
+  constructor({ auth }) {
+    Object.assign(this, { auth: auth() });
   }
 
-  get isSignedUp () {
-    return !!this.user;
+  get isLoggedIn () {
+    return !!this.auth.currentUser;
   }
 
-  login (user) {
-    return clone.call(this, user)
+  login () {
+    return clone.call(this);
   }
 
   logout () {
-    return clone.call(this, undefined)
+    if (this.auth.currentUser === null) return this;
+
+    this.auth.signOut();
+
+    return clone.call(this);
   }
 }
 

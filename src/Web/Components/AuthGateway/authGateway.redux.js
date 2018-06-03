@@ -11,10 +11,10 @@ function changeAuthState (dispatch, user) {
   })
 }
 
-function mapStateToProps ({ firebase: { auth, isSignedUp } }) {
+function mapStateToProps ({ firebase: { auth, isLoggedIn } }) {
   return {
     auth,
-    isSignedUp
+    isLoggedIn
   };
 }
 
