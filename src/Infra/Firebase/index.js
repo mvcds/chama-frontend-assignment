@@ -6,7 +6,11 @@ import Firebase from './Firebase';
 
 const app = firebase.initializeApp(config);
 
-export default new Firebase(app.firebase_);
+const { auth } = app.firebase_
+
+export default new Firebase({
+  auth: auth()
+});
 
 export const signInOptions = [
   firebase.auth.GoogleAuthProvider.PROVIDER_ID

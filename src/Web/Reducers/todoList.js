@@ -1,6 +1,6 @@
-import TodoList from '../../Domain/Objects/TodoList/todoList.factory';
+import TodoList from '../../Domain/Objects/TodoList';
 
-const DEFAULT = TodoList.WithNonDoneTodos(5);
+const DEFAULT = new TodoList();
 
 const REDUCERS = {
   TOGGLE_TODO: (state, { todo, isCompleted }) => state.editTodo(todo, { isCompleted }),
