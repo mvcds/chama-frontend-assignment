@@ -1,31 +1,14 @@
 import { connect } from 'react-redux';
 
-import AuthGateway from './index';
+function mapStateToProps ({ firebase: { profile, auth } }) {
+  const isLoaded = auth.isLoaded && profile.isLoaded
 
-function changeAuthState (dispatch, user) {
-  dispatch({
-    type: 'AUTH_CHANGE',
-    payload: {
-      user
-    }
-  })
-}
-
-function mapStateToProps ({ firebase: { auth, isLoggedIn } }) {
   return {
-    auth,
-    isLoggedIn,
-    onLogout: auth.signOut
-  };
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    onAuthStateChanged: changeAuthState.bind(null, dispatch)
+    shouldAuthenticate: profile.isEmpty,
+    isLoaded
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(AuthGateway);
+)

@@ -18,26 +18,30 @@ function Logout ({ onLogout }) {
 }
 
 class AuthGateway extends Component {
-  componentWillMount() {
-    const { auth, onAuthStateChanged } = this.props
+  constructor(props) {
+    super(props);
 
-    this.unregisterAuthObserver = auth.onAuthStateChanged(onAuthStateChanged);
-  }
+    this.auth = this.props.firebase.auth();
 
-  componentWillUnmount() {
-    this.unregisterAuthObserver();
+    this.onLogout = this.props.firebase.logout;
   }
 
   render () {
-    const { isLoggedIn, auth, onLogout } = this.props;
+    const { onLogout, auth } = this;
 
-    if (isLoggedIn) return <Logout onLogout={onLogout} />
+    if (this.props.shouldAuthenticate) {
+      return (
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={auth}
+        />
+      )
+    }
+
+    if (this.props.isLoaded) return <Logout onLogout={onLogout} />
 
     return (
-      <StyledFirebaseAuth
-        uiConfig={uiConfig}
-        firebaseAuth={auth}
-      />
+      <div>Authenticating...</div>
     )
   }
 }

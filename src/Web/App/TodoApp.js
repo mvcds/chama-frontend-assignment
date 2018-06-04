@@ -5,7 +5,9 @@ import NewTodo from '../Components/NewTodo';
 import TodoList from '../Components/TodoList';
 import TodoListFooter from '../Components/TodoListFooter';
 
-function TodoApp () {
+function TodoApp ({ shouldAuthenticate }) {
+  if (shouldAuthenticate) return false;
+
   return (
     <React.Fragment>
       <main>

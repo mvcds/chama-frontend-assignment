@@ -1,4 +1,4 @@
 {
   "name": "AuthGateway",
-  "main": "authGateway.redux.js"
+  "main": "authGateway.firebase.js"
 }

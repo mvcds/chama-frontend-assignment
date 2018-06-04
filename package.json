@@ -9,6 +9,7 @@
     "react-dom": "^16.4.0",
     "react-firebaseui": "^3.0.4",
     "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.4",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0"
   },
