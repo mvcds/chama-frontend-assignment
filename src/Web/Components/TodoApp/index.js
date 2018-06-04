@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ToggleAllTodos from '../Components/ToggleAllTodos';
-import NewTodo from '../Components/NewTodo';
-import TodoList from '../Components/TodoList';
-import TodoListFooter from '../Components/TodoListFooter';
+import ToggleAllTodos from './ToggleAllTodos';
+import NewTodo from './NewTodo';
+import TodoList from './TodoList';
+import TodoListFooter from './TodoListFooter';
 
 function TodoApp ({ shouldAuthenticate }) {
   if (shouldAuthenticate) return false;

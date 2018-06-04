@@ -1,8 +1,7 @@
 import React from 'react';
 
+import TodoApp from '../Components/TodoApp';
 import AuthGateway from '../Components/AuthGateway';
-
-import TodoApp from './TodoApp';
 
 import './app.css';
 
