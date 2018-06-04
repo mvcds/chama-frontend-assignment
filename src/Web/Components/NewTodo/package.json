@@ -1,4 +1,4 @@
 {
   "name": "NewTodo",
-  "main": "newTodo.redux.js"
+  "main": "newTodo.firebase.js"
 }

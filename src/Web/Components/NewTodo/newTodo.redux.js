@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
-import NewTodo from './newTodo.state';
-
-function addTodo (dispatch, text) {
+function addTodo (dispatch, firebase, text, uid) {
+  firebase.push(`users/${uid}/todos`, { text })
   dispatch({
     type: 'ADD_TODO',
     payload: {
@@ -11,13 +10,28 @@ function addTodo (dispatch, text) {
   })
 }
 
-function mapDispatchToProps (dispatch) {
+function mapStateToProps ({ firebase: { auth } }) {
   return {
-    addTodo: addTodo.bind(null, dispatch)
+    uid: auth.uid
   };
 }
 
+function mapDispatchToProps (dispatch, { firebase }) {
+  return {
+    addTodo: addTodo.bind(null, dispatch, firebase)
+  };
+}
+
+function mergeProps (state, dispatch) {
+  return {
+    ...state,
+    ...dispatch,
+    addTodo: (text) => dispatch.addTodo(text, state.uid)
+  }
+}
+
 export default connect(
-  null,
-  mapDispatchToProps
-)(NewTodo);
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)

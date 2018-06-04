@@ -30,10 +30,10 @@ function deleteTodo (dispatch, todo) {
 }
 
 function mapStateToProps ({ firebase: { data, auth } }) {
-  const { todos } = data.users[auth.uid]
+  const todos = data.users[auth.uid].todos || {}
 
   return {
-    todos
+    todos: Object.values(todos)
   };
 }
 
