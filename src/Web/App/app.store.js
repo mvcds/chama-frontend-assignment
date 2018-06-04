@@ -1,12 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
+import Store from '../../Infra/ReduxStore';
+
 import App from './app.redux';
-import store from './store';
 
 function AppStore () {
   return (
-    <Provider store={store}>
+    <Provider store={Store}>
       <App />
     </Provider>
   )

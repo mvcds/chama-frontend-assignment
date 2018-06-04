@@ -1,8 +1,9 @@
 import { compose, createStore } from 'redux';
 import { reactReduxFirebase } from 'react-redux-firebase';
 
-import rootReducer from '../Reducers';
-import Firebase from '../../Infra/Firebase';
+import Firebase from '../Firebase';
+
+import rootReducer from './reducers';
 
 const firebaseConfig = {
   userProfile: 'users'
