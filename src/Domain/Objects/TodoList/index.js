@@ -45,6 +45,13 @@ function DescSort (a, b) {
   return AscSort(b, a);
 }
 
+function asJson (json, [ key, value ]) {
+  return {
+    ...json,
+    [key]: value
+  }
+}
+
 class TodoList {
   constructor (raw) {
     const data = Object.assign({}, DEFAULTS, raw)
@@ -141,6 +148,11 @@ class TodoList {
     doppelganger.__todos = undefined;
 
     return doppelganger;
+  }
+
+  toJson () {
+    return Array.from(this.__rawTodos.entries())
+      .reduce(asJson, {});
   }
 }
 

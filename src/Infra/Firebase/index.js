@@ -6,10 +6,11 @@ import Firebase from './Firebase';
 
 const app = firebase.initializeApp(config);
 
-const { auth } = app.firebase_
+const { auth, database } = app.firebase_;
 
 export default new Firebase({
-  auth: auth()
+  auth: auth(),
+  database: database()
 });
 
 export const signInOptions = [
