@@ -5,6 +5,7 @@ function mapStateToProps ({ firebase: { profile, auth } }) {
 
   return {
     shouldAuthenticate: profile.isEmpty,
+    userName: profile.displayName,
     isLoaded
   };
 }

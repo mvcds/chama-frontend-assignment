@@ -11,37 +11,37 @@ const uiConfig = {
   }
 };
 
-function Logout ({ onLogout }) {
-  return (
-    <button onClick={onLogout}>Logout</button>
-  )
-}
-
 class AuthGateway extends Component {
   constructor(props) {
     super(props);
 
     this.auth = this.props.firebase.auth();
-
-    this.onLogout = this.props.firebase.logout;
+    this.Logout = this.Logout.bind(this);
   }
 
   render () {
-    const { onLogout, auth } = this;
+    if (this.props.shouldAuthenticate) return (
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={this.auth} />
+    )
 
-    if (this.props.shouldAuthenticate) {
-      return (
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={auth}
-        />
-      )
-    }
+    const Content = this.props.isLoaded ? this.Logout : this.Authentication
 
-    if (this.props.isLoaded) return <Logout onLogout={onLogout} />
+    return <Content />
+  }
 
+  Authentication () {
     return (
       <div>Authenticating...</div>
+    )
+  }
+
+  Logout () {
+    const { firebase, userName } = this.props;
+
+    return (
+      <button onClick={firebase.logout}>
+        Logout, {userName}
+      </button>
     )
   }
 }
