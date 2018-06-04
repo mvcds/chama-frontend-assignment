@@ -12,4 +12,4 @@ function mapStateToProps ({ firebase: { profile, auth } }) {
 
 export default connect(
   mapStateToProps,
-)
+);

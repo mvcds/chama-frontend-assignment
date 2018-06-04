@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 
-import TodoList from './index';
-
 function toggleTodo (dispatch, todo, isCompleted) {
   dispatch({
     type: 'TOGGLE_TODO',
@@ -31,7 +29,9 @@ function deleteTodo (dispatch, todo) {
   })
 }
 
-function mapStateToProps ({ todoList: { todos } }) {
+function mapStateToProps ({ firebase: { data, auth } }) {
+  const { todos } = data.users[auth.uid]
+
   return {
     todos
   };
@@ -48,4 +48,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoList);
+);

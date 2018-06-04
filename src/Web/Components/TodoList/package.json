@@ -1,4 +1,4 @@
 {
   "name": "TodoList",
-  "main": "todoList.redux.js"
+  "main": "todoList.firebase.js"
 }

@@ -5,8 +5,7 @@ import rootReducer from '../Reducers';
 import Firebase from '../../Infra/Firebase';
 
 const firebaseConfig = {
-  userProfile: 'users',
-  attachAuthIsReady: true
+  userProfile: 'users'
 };
 
 const createStoreWithFirebase = compose(
