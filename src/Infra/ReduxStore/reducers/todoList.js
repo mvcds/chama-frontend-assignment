@@ -9,9 +9,7 @@ const REDUCERS = {
   EDIT_TODO: (state, { todo, text }) => state.editTodo(todo, { text }),
   DELETE_TODO: (state, { todo }) => state.deleteTodo(todo),
   TOGGLE_SORTER: (state) => state.toggleSorter(),
-  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted(),
-  IGNITE: (state, { firebase }) => state.ignite(firebase),
-  EXTINGUISH: (state) => state.extinguish(),
+  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted()
 }
 
 function todoList (state = DEFAULT, { type, payload }) {

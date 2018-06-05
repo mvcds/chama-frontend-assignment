@@ -1,5 +1,3 @@
-import Todo from '../../Entities/Todo';
-
 const ASCENDENT = 'asc'
 const DESCENDENT = 'desc'
 const DESTROY = { isDeleted: true }
@@ -91,10 +89,6 @@ class TodoList {
     return this.todos.every(isCompleted);
   }
 
-  get add () {
-    return this.__firebase.push;
-  }
-
   addTodo (todo) {
     const doppelganger = clone.call(this);
 
@@ -155,18 +149,6 @@ class TodoList {
   toJson () {
     return Array.from(this.__rawTodos.entries())
       .reduce(asJson, {});
-  }
-
-  ignite (firebase) {
-    const doppelganger = clone.call(this);
-
-    doppelganger.__firebase = firebase;
-
-    return doppelganger;
-  }
-
-  extinguish () {
-    return this.ignite();
   }
 }
 
