@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs/react';
 import { lorem } from 'faker';
 
-import TodoListFactory from '../../../Domain/Objects/TodoList/todoList.factory';
+import TodoListFactory from '../../../../Domain/Objects/TodoList/todoList.factory';
 
 import TodoList from './index';
 
