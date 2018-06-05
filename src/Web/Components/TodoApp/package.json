@@ -1,4 +1,4 @@
 {
   "name": "TodoApp",
-  "main": "todoApp.redux.js"
+  "main": "todoApp.firebase.js"
 }

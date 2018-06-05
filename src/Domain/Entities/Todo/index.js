@@ -5,9 +5,7 @@ const DEFAULTS = {
 
 class Todo {
   constructor (data) {
-    const id = data.id || new Date().getTime().toString();
-
-    Object.assign(this, DEFAULTS, data, { id });
+    Object.assign(this, DEFAULTS, data);
   }
 }
 

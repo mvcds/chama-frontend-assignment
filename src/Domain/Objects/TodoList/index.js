@@ -91,10 +91,12 @@ class TodoList {
     return this.todos.every(isCompleted);
   }
 
-  addTodo (text) {
-    const doppelganger = clone.call(this);
+  get add () {
+    return this.__firebase.push;
+  }
 
-    const todo = new Todo({ text });
+  addTodo (todo) {
+    const doppelganger = clone.call(this);
 
     doppelganger.__rawTodos.set(todo.id, todo);
 
@@ -153,6 +155,18 @@ class TodoList {
   toJson () {
     return Array.from(this.__rawTodos.entries())
       .reduce(asJson, {});
+  }
+
+  ignite (firebase) {
+    const doppelganger = clone.call(this);
+
+    doppelganger.__firebase = firebase;
+
+    return doppelganger;
+  }
+
+  extinguish () {
+    return this.ignite();
   }
 }
 

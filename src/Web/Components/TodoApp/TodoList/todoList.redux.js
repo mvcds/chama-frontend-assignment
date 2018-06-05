@@ -29,11 +29,9 @@ function deleteTodo (dispatch, todo) {
   })
 }
 
-function mapStateToProps ({ firebase: { data, auth } }) {
-  const todos = data.users[auth.uid].todos || {}
-
+function mapStateToProps ({ todoList: { todos }}) {
   return {
-    todos: Object.values(todos)
+    todos
   };
 }
 

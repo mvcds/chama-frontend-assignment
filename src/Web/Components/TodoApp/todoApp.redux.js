@@ -1,6 +1,17 @@
 import { connect } from 'react-redux';
 
-import TodoApp from './index';
+function ignite (dispatch, firebase) {
+  dispatch({
+    type: 'IGNITE',
+    payload: {
+      firebase
+    }
+  })
+}
+
+function extinguish (dispatch) {
+  dispatch({ type: 'EXTINGUISH' })
+}
 
 function mapStateToProps ({ firebase: { profile } }) {
   return {
@@ -8,6 +19,23 @@ function mapStateToProps ({ firebase: { profile } }) {
   };
 }
 
+function mapDispatchToProps (dispatch, { firebase }) {
+  return {
+    dispatch,
+    firebase
+  }
+}
+
+function mergeProps ({ shouldAuthenticate }, { dispatch, firebase }) {
+  return {
+    shouldAuthenticate,
+    onIgnite: ignite.bind(null, dispatch, firebase),
+    onExtinguish: extinguish.bind(null, dispatch)
+  }
+}
+
 export default connect(
-  mapStateToProps
-)(TodoApp);
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+);

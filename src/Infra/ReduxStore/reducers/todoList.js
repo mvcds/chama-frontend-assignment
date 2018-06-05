@@ -5,11 +5,13 @@ const DEFAULT = new TodoList();
 const REDUCERS = {
   TOGGLE_TODO: (state, { todo, isCompleted }) => state.editTodo(todo, { isCompleted }),
   TOGGLE_ALL: (state, { isCompleted }) => state.toggleAll(isCompleted),
-  ADD_TODO: (state, { text }) => state.addTodo(text),
+  ADD_TODO: (state, { todo }) => state.addTodo(todo),
   EDIT_TODO: (state, { todo, text }) => state.editTodo(todo, { text }),
   DELETE_TODO: (state, { todo }) => state.deleteTodo(todo),
   TOGGLE_SORTER: (state) => state.toggleSorter(),
-  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted()
+  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted(),
+  IGNITE: (state, { firebase }) => state.ignite(firebase),
+  EXTINGUISH: (state) => state.extinguish(),
 }
 
 function todoList (state = DEFAULT, { type, payload }) {

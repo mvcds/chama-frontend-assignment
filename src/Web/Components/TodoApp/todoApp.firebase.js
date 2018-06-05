@@ -1,10 +1,10 @@
 import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
-import NewTodo from './newTodo.state';
-import redux from './newTodo.redux';
+import TodoApp from './index';
+import redux from './todoApp.redux';
 
 export default compose(
   firebaseConnect(),
   redux
-)(NewTodo)
+)(TodoApp)
