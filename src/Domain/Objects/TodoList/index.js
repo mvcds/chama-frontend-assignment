@@ -1,3 +1,5 @@
+import Todo from '../../Entities/Todo';
+
 const ASCENDENT = 'asc'
 const DESCENDENT = 'desc'
 const DESTROY = { isDeleted: true }
@@ -149,6 +151,13 @@ class TodoList {
   toJson () {
     return Array.from(this.__rawTodos.entries())
       .reduce(asJson, {});
+  }
+
+  readTodos (rawTodos) {
+    const todos = Object.entries(rawTodos)
+      .map(([ id, todo ]) => new Todo({ ...todo, id }));
+
+    return new TodoList({ todos });
   }
 }
 

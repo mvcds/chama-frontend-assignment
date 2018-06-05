@@ -7,10 +7,10 @@ const REDUCERS = {
   EDIT_TODO: (state, { todo, text }) => state.editTodo(todo, { text }),
   TOGGLE_TODO: (state, { todo, isCompleted }) => state.editTodo(todo, { isCompleted }),
   DELETE_TODO: (state, { todo }) => state.deleteTodo(todo),
-
   TOGGLE_ALL: (state, { isCompleted }) => state.toggleAll(isCompleted),
   TOGGLE_SORTER: (state) => state.toggleSorter(),
-  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted()
+  CLEAR_COMPLETED_TODOS: (state) => state.clearCompleted(),
+  READ_TODOS: (state, { todos }) => state.readTodos(todos)
 }
 
 function todoList (state = DEFAULT, { type, payload }) {

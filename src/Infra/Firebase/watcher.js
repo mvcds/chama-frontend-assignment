@@ -7,6 +7,14 @@ class Firewatcher {
     return this.__firebase.set;
   }
 
+  read (path) {
+    const ref = this.__firebase.ref(path);
+
+    return () => new Promise((resolve) => {
+      ref.on('value', (snapshot) => resolve(snapshot.val()))
+    });
+  }
+
   ignite (firebase) {
     const doppelganger = new Firewatcher({ ...this })
 
