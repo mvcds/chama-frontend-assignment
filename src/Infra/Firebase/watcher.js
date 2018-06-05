@@ -3,6 +3,10 @@ class Firewatcher {
     return this.__firebase.push;
   }
 
+  get update () {
+    return this.__firebase.set;
+  }
+
   ignite (firebase) {
     const doppelganger = new Firewatcher({ ...this })
 

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 function toggleTodo (dispatch, todo, isCompleted) {
   dispatch({
-    type: 'TOGGLE_TODO',
+    type: 'TOGGLE_TODO_ASYNC',
     payload: {
       todo,
       isCompleted
@@ -12,7 +12,7 @@ function toggleTodo (dispatch, todo, isCompleted) {
 
 function editTodo (dispatch, todo, text) {
   dispatch({
-    type: 'EDIT_TODO',
+    type: 'EDIT_TODO_ASYNC',
     payload: {
       todo,
       text
@@ -22,7 +22,7 @@ function editTodo (dispatch, todo, text) {
 
 function deleteTodo (dispatch, todo) {
   dispatch({
-    type: 'DELETE_TODO',
+    type: 'DELETE_TODO_ASYNC',
     payload: {
       todo
     }
