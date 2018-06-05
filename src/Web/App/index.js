@@ -5,10 +5,10 @@ import AuthGateway from '../Components/AuthGateway';
 
 import './app.css';
 
-function Main ({ shouldAuthenticate }) {
+function Main () {
   return (
     <React.Fragment>
-      <TodoApp shouldAuthenticate={shouldAuthenticate} />
+      <TodoApp />
       <AuthGateway />
     </React.Fragment>
   )
@@ -20,7 +20,7 @@ function Loader () {
   )
 }
 
-function App ({ isLoaded, shouldAuthenticate }) {
+function App ({ isLoaded }) {
   const Content = isLoaded ? Main : Loader
 
   return (
@@ -28,7 +28,7 @@ function App ({ isLoaded, shouldAuthenticate }) {
       <header className="app__header">
         <h1 className="app__title">todos</h1>
       </header>
-      <Content shouldAuthenticate={shouldAuthenticate} />
+      <Content />
     </div>
   );
 }
