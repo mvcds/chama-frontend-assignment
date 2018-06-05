@@ -4,12 +4,12 @@ import Todo from '../../../Domain/Entities/Todo';
 
 function* addTodo () {
   while (true) {
-    const { payload: { text } } = yield take('ASYNC_ADD_TODO');
+    const { payload: { text } } = yield take('ADD_TODO_ASYNC');
     const { firewatcher, firebase: { auth: { uid } } } = yield select();
 
     const todo = new Todo({ text })
 
-    const { key } = yield call(firewatcher.add, `users/${uid}/todos`, todo);
+    const { key } = yield call(firewatcher.create, `users/${uid}/todos`, todo);
 
     todo.id = key;
 

@@ -4,7 +4,7 @@ import NewTodo from './newTodo.state';
 
 function addTodo (dispatch, text) {
   dispatch({
-    type: 'ASYNC_ADD_TODO',
+    type: 'ADD_TODO_ASYNC',
     payload: {
       text
     }

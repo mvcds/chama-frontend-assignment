@@ -1,5 +1,5 @@
 class Firewatcher {
-  get add () {
+  get create () {
     return this.__firebase.push;
   }
 
