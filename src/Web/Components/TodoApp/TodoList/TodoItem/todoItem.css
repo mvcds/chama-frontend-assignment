@@ -1,0 +1,24 @@
+.todo-item__completion {
+  align-self: center;
+  margin: 0;
+}
+
+.todo-item__text {
+  margin: 0 8px;
+  flex: 1;
+}
+
+.todo-item__priority {
+  font-size: .8em;
+  align-self: center;
+}
+
+.todo-item__input {
+  padding: 0px;
+  margin-left: 20px;
+  width: 100%;
+  font-size: 1em;
+  border: none;
+  outline: 0;
+  font-family: sans-serif;
+}

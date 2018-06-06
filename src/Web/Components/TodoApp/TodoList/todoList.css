@@ -13,28 +13,3 @@
   display: flex;
   background: #FFFFFF;
 }
-
-.todo-list__item-completion {
-  align-self: center;
-  margin: 0;
-}
-
-.todo-list__item-text {
-  margin: 0 8px;
-  flex: 1;
-}
-
-.todo-list__item-priority {
-  font-size: .8em;
-  align-self: center;
-}
-
-.todo-list__input {
-  padding: 0px;
-  margin-left: 20px;
-  width: 100%;
-  font-size: 1em;
-  border: none;
-  outline: 0;
-  font-family: sans-serif;
-}

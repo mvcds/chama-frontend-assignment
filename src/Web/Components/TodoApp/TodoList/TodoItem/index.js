@@ -1,21 +1,23 @@
 import React from 'react';
 
+import './todoItem.css';
+
 function StaticTodo ({ todo, onToggle, onStartEditing }) {
   return (
     <React.Fragment>
       <input
-        className="todo-list__item-completion"
+        className="todo-item__completion"
         type="checkbox"
         onChange={onToggle}
         checked={todo.isCompleted}
       />
       <span
-        className="todo-list__item-text"
+        className="todo-item__text"
         onDoubleClick={onStartEditing}
       >
         {todo.text}
       </span>
-      <span className="todo-list__item-priority">
+      <span className="todo-item__priority">
         {todo.priority}
       </span>
     </React.Fragment>
@@ -25,7 +27,7 @@ function StaticTodo ({ todo, onToggle, onStartEditing }) {
 function EditableTodo ({ editedTodo, onKeyDown, onChange, onExitEditing }) {
   return (
     <input
-      className="todo-list__input"
+      className="todo-item__input"
       placeholder="Empties get erased"
       value={editedTodo}
       onKeyDown={onKeyDown}
