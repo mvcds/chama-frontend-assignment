@@ -10,12 +10,12 @@ function toggleTodo (dispatch, todo, isCompleted) {
   })
 }
 
-function editTodo (dispatch, todo, text) {
+function editTodo (dispatch, todo, changes) {
   dispatch({
     type: 'EDIT_TODO_ASYNC',
     payload: {
       todo,
-      text
+      ...changes
     }
   })
 }

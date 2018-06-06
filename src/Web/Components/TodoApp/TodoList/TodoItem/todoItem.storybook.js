@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
-import { lorem } from 'faker';
+import { lorem, random } from 'faker';
 
 import TodoItem from './index';
 
@@ -16,10 +16,11 @@ const QUANTITY = {
 
 const props = {
   onToggle: action('toogle'),
-  onStartEditing: action('start editing'),
   onKeyDown: action('key down'),
-  onChange: action('change'),
-  onExitEditing: action('exit editing')
+  onChangeText: action('change text'),
+  onUpdate: action('updating todo'),
+  onOpenEditing: action('open editing'),
+  onCloseEditing: action('close modal')
 }
 
 const todoSeed = lorem.words()
@@ -27,7 +28,7 @@ const todoSeed = lorem.words()
 storiesOf('Organisms / Todo Item', module)
   .addDecorator(withKnobs)
   .addDecorator((story) => <div className="todo-list__item">{story()}</div>)
-  .add('Static', () => {
+  .add('Default', () => {
     const textTodo = text('To do', todoSeed)
     const isCompleted = boolean('Completed?', false)
     const priority = number('Priority', MIN, QUANTITY)
@@ -44,15 +45,21 @@ storiesOf('Organisms / Todo Item', module)
         todo={todo}
       />
     )
-  })
-  .add('Editable', () => {
-    const editedTodo = text('Edited', todoSeed)
+  }).add('Editing', () => {
+    const editedText = text('Edited', todoSeed)
+
+    const todo = {
+      text: lorem.words(),
+      isCompleted: random.boolean(),
+      priority: random.number()
+    }
 
     return (
       <TodoItem
         {...props}
+        todo={todo}
         isEditing
-        editedTodo={editedTodo}
+        text={editedText}
       />
     )
   })

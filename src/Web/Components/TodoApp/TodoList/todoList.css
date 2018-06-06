@@ -24,17 +24,17 @@
   flex: 1;
 }
 
-.todo-list__item-priority {
-  font-size: .8em;
-  align-self: center;
+.todo-list__item-button {
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
 }
 
 .todo-list__input {
-  padding: 0px;
-  margin-left: 20px;
+  padding: 8px;
   width: 100%;
   font-size: 1em;
-  border: none;
   outline: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
