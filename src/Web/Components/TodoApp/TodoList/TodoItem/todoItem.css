@@ -1,3 +1,7 @@
+.todo-item {
+  display: flex;
+}
+
 .todo-item__completion {
   align-self: center;
   margin: 0;

@@ -1,9 +1,12 @@
 import React from 'react';
+import bem from 'bem-classname'
 
 import Calendar from '../../../Calendar'
 import FormattedDate from '../../../FormattedDate'
 
 import './todoItem.css';
+
+const baseClass = bem.bind(null, 'todo-item')
 
 function DueDate (props) {
   const {
@@ -29,19 +32,19 @@ function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate
   return (
     <React.Fragment>
       <input
-        className="todo-item__completion"
+        className={baseClass('completion')}
         type="checkbox"
         onChange={onToggle}
         checked={todo.isCompleted}
       />
       <span
-        className="todo-item__text"
+        className={baseClass('text')}
         onDoubleClick={onStartEditingText}
       >
         {todo.text}
       </span>
       <button
-        className="todo-item__due-date"
+        className={baseClass('due-date')}
         onClick={onStartEditingDueDate}
       >
         <FormattedDate
@@ -57,7 +60,7 @@ function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate
 function EditableTodo ({ text, onKeyDown, onChangeText, onFinishEditingText }) {
   return (
     <input
-      className="todo-item__input"
+      className={baseClass('input')}
       placeholder="Empties get erased"
       value={text}
       onKeyDown={onKeyDown}
@@ -71,7 +74,9 @@ function EditableTodo ({ text, onKeyDown, onChangeText, onFinishEditingText }) {
 function TodoItem ({ isEditingText, ...rest }) {
   const Todo = isEditingText ? EditableTodo : StaticTodo
 
-  return <Todo {...rest} />
+  return (
+    <Todo {...rest} />
+  )
 }
 
 export default TodoItem;
