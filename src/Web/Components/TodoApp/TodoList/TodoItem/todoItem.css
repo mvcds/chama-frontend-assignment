@@ -8,11 +8,6 @@
   flex: 1;
 }
 
-.todo-item__priority {
-  font-size: .8em;
-  align-self: center;
-}
-
 .todo-item__input {
   padding: 0px;
   margin-left: 20px;
@@ -21,4 +16,15 @@
   border: none;
   outline: 0;
   font-family: sans-serif;
+}
+
+.todo-item__due-date {
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 8px;
+  outline: 0;
+}
+
+.todo-item__due-date:hover {
+  background-color: #EEE;
 }

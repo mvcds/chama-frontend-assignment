@@ -1,8 +1,31 @@
 import React from 'react';
 
+import Calendar from '../../../Calendar'
+import FormattedDate from '../../../FormattedDate'
+
 import './todoItem.css';
 
-function StaticTodo ({ todo, onToggle, onStartEditing }) {
+function DueDate (props) {
+  const {
+    isEditingDueDate, dueDate,
+    onFinishEditingDueDate, onChangDueDate, onSaveDueDate
+  } = props;
+
+  if (!isEditingDueDate) return null;
+
+  return (
+    <Calendar
+      title="Due Date"
+      emptyDateMessage="Select a due date below"
+      onClose={onFinishEditingDueDate}
+      onChange={onChangDueDate}
+      date={dueDate}
+      onSave={onSaveDueDate}
+    />
+  )
+}
+
+function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate, ...dueDate }) {
   return (
     <React.Fragment>
       <input
@@ -13,33 +36,40 @@ function StaticTodo ({ todo, onToggle, onStartEditing }) {
       />
       <span
         className="todo-item__text"
-        onDoubleClick={onStartEditing}
+        onDoubleClick={onStartEditingText}
       >
         {todo.text}
       </span>
-      <span className="todo-item__priority">
-        {todo.priority}
-      </span>
+      <button
+        className="todo-item__due-date"
+        onClick={onStartEditingDueDate}
+      >
+        <FormattedDate
+          emptyDateMessage="No due date"
+          date={todo.dueDate}
+        />
+      </button>
+      <DueDate {...dueDate} dueDate={todo.dueDate} />
     </React.Fragment>
   )
 }
 
-function EditableTodo ({ editedTodo, onKeyDown, onChange, onExitEditing }) {
+function EditableTodo ({ text, onKeyDown, onChangeText, onFinishEditingText }) {
   return (
     <input
       className="todo-item__input"
       placeholder="Empties get erased"
-      value={editedTodo}
+      value={text}
       onKeyDown={onKeyDown}
-      onChange={onChange}
-      onBlur={onExitEditing}
+      onChange={onChangeText}
+      onBlur={onFinishEditingText}
       autoFocus
     />
   )
 }
 
-function TodoItem ({ isEditing, ...rest }) {
-  const Todo = isEditing ? EditableTodo : StaticTodo
+function TodoItem ({ isEditingText, ...rest }) {
+  const Todo = isEditingText ? EditableTodo : StaticTodo
 
   return <Todo {...rest} />
 }

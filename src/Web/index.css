@@ -5,3 +5,16 @@ body {
   background: #F5F5F5;
   font-size: 16px;
 }
+
+button {
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+button:disabled {
+  cursor: inherit;
+}
+
+button:focus {
+  outline: none;
+}

@@ -7,8 +7,6 @@
 }
 
 .todo-list-footer button {
-  font-family: sans-serif;
-  cursor: pointer;
   font-size: .8em;
   border: 0;
   padding: 0;
@@ -16,10 +14,6 @@
 
 .todo-list-footer button:hover {
   text-decoration: underline;
-}
-
-.todo-list-footer button:focus {
-  outline: none;
 }
 
 .todo-list-footer__numbers,

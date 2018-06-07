@@ -15,6 +15,10 @@ class Firewatcher {
     });
   }
 
+  get delete () {
+    return this.__firebase.remove;
+  }
+
   ignite (firebase) {
     const doppelganger = new Firewatcher({ ...this })
 

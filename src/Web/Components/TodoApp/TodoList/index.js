@@ -12,12 +12,12 @@ function asItem (todo, index) {
   )
 }
 
-function TodoList ({ todos, onToggle, onEdit, onDelete }) {
+function TodoList ({ todos, ...item }) {
   if (!todos) return null;
 
   return (
     <ul className="todo-list">
-      {todos.map(asItem, { onToggle, onEdit, onDelete })}
+      {todos.map(asItem, item)}
     </ul>
   )
 }

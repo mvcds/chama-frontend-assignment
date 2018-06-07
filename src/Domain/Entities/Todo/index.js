@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const DEFAULTS = {
   isCompleted: false,
   isDeleted: false

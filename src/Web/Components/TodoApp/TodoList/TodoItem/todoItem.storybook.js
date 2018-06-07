@@ -1,25 +1,24 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
 import { lorem } from 'faker';
+
+import TodoFactory from '../../../../../Domain/Entities/Todo/todo.factory';
 
 import TodoItem from './index';
 
-const MIN = 1;
-
-const QUANTITY = {
-  min: MIN,
-  max: 5,
-  range: true
-};
-
 const props = {
+  todo: TodoFactory.Random(),
   onToggle: action('toogle'),
-  onStartEditing: action('start editing'),
   onKeyDown: action('key down'),
-  onChange: action('change'),
-  onExitEditing: action('exit editing')
+  onChangeText: action('change text'),
+  onStartEditingText: action('start editing text'),
+  onFinishEditingText: action('finish editing text'),
+  onChangDueDate: action('change due date'),
+  onStartEditingDueDate: action('start editing due date'),
+  onFinishEditingDueDate: action('finish editing due date'),
+  onSaveDueDate: action('saving due date')
 }
 
 const todoSeed = lorem.words()
@@ -27,16 +26,15 @@ const todoSeed = lorem.words()
 storiesOf('Organisms / Todo Item', module)
   .addDecorator(withKnobs)
   .addDecorator((story) => <div className="todo-list__item">{story()}</div>)
-  .add('Static', () => {
+  .add('Default', () => {
     const textTodo = text('To do', todoSeed)
     const isCompleted = boolean('Completed?', false)
-    const priority = number('Priority', MIN, QUANTITY)
+    const hasDueDate = boolean('Has due date?', false)
 
-    const todo = {
-      text: textTodo,
-      isCompleted,
-      priority
-    }
+    const todo = hasDueDate ? TodoFactory.WithDueDate() : TodoFactory.WithoutDueDate()
+
+    todo.text = textTodo
+    todo.isCompleted = isCompleted
 
     return (
       <TodoItem
@@ -45,14 +43,23 @@ storiesOf('Organisms / Todo Item', module)
       />
     )
   })
-  .add('Editable', () => {
-    const editedTodo = text('Edited', todoSeed)
+  .add('Editing Due Date', () => {
+    return (
+      <TodoItem
+        {...props}
+        todo={TodoFactory.WithDueDate()}
+        isEditingDueDate
+      />
+    )
+  })
+  .add('Editing Text', () => {
+    const editedText = text('Edited Text', todoSeed)
 
     return (
       <TodoItem
         {...props}
-        isEditing
-        editedTodo={editedTodo}
+        isEditingText
+        text={editedText}
       />
     )
   })

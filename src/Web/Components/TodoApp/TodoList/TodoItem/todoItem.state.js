@@ -5,21 +5,43 @@ import TodoItem from './index'
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
 
-function resetEditedTodo () {
+function resetEditedText () {
   const { text } = this.props.todo
 
   this.setState({
-    isEditing: false,
-    editedTodo: text
+    isEditingText: false,
+    text
   })
 }
 
-function closeForEdition () {
-  this.setState({ isEditing: false })
+function toogle (todo, event) {
+  this.props.onToggle(todo, event.target.checked);
 }
 
-function mutate () {
-  const text = this.state.editedTodo.trim();
+function closeTextEdition () {
+  this.setState({ isEditingText: false })
+}
+
+function readKey (event) {
+  if (event.keyCode === ESCAPE_KEY) return resetEditedText.call(this);
+
+  if (event.keyCode !== ENTER_KEY) return;
+
+  event.preventDefault();
+
+  finishEditingText.call(this);
+}
+
+function changeText (event) {
+  this.setState({ text: event.target.value });
+}
+
+function startEditingText () {
+  this.setState({ isEditingText: true })
+}
+
+function finishEditingText () {
+  const text = this.state.text.trim();
 
   const { todo } = this.props
 
@@ -29,29 +51,23 @@ function mutate () {
     this.props.onEdit(todo, text);
   }
 
-  closeForEdition.call(this);
+  closeTextEdition.call(this);
 }
 
-function handleKeyDown (event) {
-  if (event.keyCode === ESCAPE_KEY) return resetEditedTodo.call(this);
-
-  if (event.keyCode !== ENTER_KEY) return;
-
-  event.preventDefault();
-
-  mutate.call(this);
+function changeDueDate (date) {
+  this.setState({ date });
 }
 
-function handleChange (event) {
-  this.setState({ editedTodo: event.target.value });
+function startEditingDueDate () {
+  this.setState({ isEditingDueDate: true })
 }
 
-function handleToggle (todo, event) {
-  this.props.onToggle(todo, event.target.checked);
+function finishEditingDueDate () {
+  this.setState({ isEditingDueDate: false })
 }
 
-function openForEdition () {
-  this.setState({ isEditing: true })
+function saveDueDate (todo, date) {
+  this.props.onSaveDueDate(todo, date);
 }
 
 class TodoItemState extends Component {
@@ -59,16 +75,22 @@ class TodoItemState extends Component {
     super(props);
 
     this.state = {
-      isEditing: false,
-      editedTodo: props.todo.text
+      isEditingText: false,
+      isEditingDueDate: false,
+      text: props.todo.text,
+      dueDate: props.todo.dueDate
     }
 
     this.methods = {
-      onToggle: handleToggle.bind(this, props.todo),
-      onStartEditing: openForEdition.bind(this),
-      onKeyDown: handleKeyDown.bind(this),
-      onChange: handleChange.bind(this),
-      onExitEditing: mutate.bind(this)
+      onToggle: toogle.bind(this, props.todo),
+      onKeyDown: readKey.bind(this),
+      onChangeText: changeText.bind(this),
+      onStartEditingText: startEditingText.bind(this),
+      onChangDueDate: changeDueDate.bind(this),
+      onFinishEditingText: finishEditingText.bind(this),
+      onStartEditingDueDate: startEditingDueDate.bind(this),
+      onFinishEditingDueDate: finishEditingDueDate.bind(this),
+      onSaveDueDate: saveDueDate.bind(this, props.todo)
     }
   }
 

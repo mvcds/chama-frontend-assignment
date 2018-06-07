@@ -29,6 +29,16 @@ function deleteTodo (dispatch, todo) {
   })
 }
 
+function saveDueDate (dispatch, todo, dueDate) {
+  dispatch({
+    type: 'SET_TODO_DUE_DATE_ASYNC',
+    payload: {
+      todo,
+      dueDate
+    }
+  })
+}
+
 function mapStateToProps ({ todoList: { todos }}) {
   return {
     todos
@@ -39,7 +49,8 @@ function mapDispatchToProps (dispatch) {
   return {
     onToggle: toggleTodo.bind(null, dispatch),
     onEdit: editTodo.bind(null, dispatch),
-    onDelete: deleteTodo.bind(null, dispatch)
+    onDelete: deleteTodo.bind(null, dispatch),
+    onSaveDueDate: saveDueDate.bind(null, dispatch)
   };
 }
 
