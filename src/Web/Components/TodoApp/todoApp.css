@@ -1,0 +1,14 @@
+.todo-app {
+  max-width: 50%;
+}
+
+.todo-app__inputs {
+  display: flex;
+  background: #FFFFFF;
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+  padding: 16px;
+}
+
+.todo-app__footer {
+  padding: 8px;
+}

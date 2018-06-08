@@ -5,6 +5,8 @@ import NewTodo from './NewTodo';
 import TodoList from './TodoList';
 import TodoListFooter from './TodoListFooter';
 
+import './todoApp.css';
+
 class TodoApp extends Component {
   componentDidMount () {
     this.props.onIgnite()
@@ -19,15 +21,15 @@ class TodoApp extends Component {
 
     return (
       <React.Fragment>
-        <main>
-          <div className="app__inputs">
+        <main className="todo-app">
+          <div className="todo-app__inputs">
             <ToggleAllTodos />
             <NewTodo />
           </div>
           <TodoList />
           <TodoListFooter />
         </main>
-        <footer className="app__footer">
+        <footer className="todo-app__footer">
           Create a TODO and double click on it to start its edition
         </footer>
       </React.Fragment>
