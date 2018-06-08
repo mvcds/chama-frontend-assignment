@@ -181,7 +181,9 @@ class TodoList {
   }
 
   readTodos (rawTodos) {
-    const todos = Object.entries(rawTodos)
+    const nonNullRawTodos = rawTodos || {}
+
+    const todos = Object.entries(nonNullRawTodos)
       .map(([ id, todo ]) => new Todo({ ...todo, id }));
 
     return new TodoList({ todos });
