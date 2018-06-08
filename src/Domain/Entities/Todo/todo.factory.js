@@ -9,6 +9,7 @@ const factory = new Factory()
   .attr('text', lorem.words)
   .attr('isCompleted', random.boolean)
   .attr('dueDate', date.future)
+  .attr('priority', random.number)
   .attr('isDeleted', false)
 
 function create (bound, data) {

@@ -5,9 +5,11 @@ import Todo from '../../../Domain/Entities/Todo';
 function* addTodo () {
   while (true) {
     const { payload: { text } } = yield take('ADD_TODO_ASYNC');
-    const { firewatcher, firebase: { auth: { uid } } } = yield select();
+    const { firewatcher, firebase: { auth: { uid } }, todoList } = yield select();
 
-    const todo = new Todo({ text })
+    const priority = todoList.active.length;
+
+    const todo = new Todo({ text, priority })
 
     const { key } = yield call(firewatcher.create, `users/${uid}/todos`, todo);
 

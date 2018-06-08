@@ -17,16 +17,6 @@ function isActive (todo) {
   return !todo.isDeleted;
 }
 
-function setPriority (list, todo) {
-  if (todo.isDeleted) return list;
-
-  const last = list[list.length - 1];
-
-  todo.priority = (last ? last.priority : 0) + 1;
-
-  return [ ...list, todo ];
-}
-
 function addToMapping (map, todo) {
   return map.set(todo.id, todo);
 }
@@ -73,7 +63,7 @@ class TodoList {
     const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
 
     this.__todos = Array.from(this.__rawTodos.values())
-      .reduce(setPriority, [])
+      .filter(isActive)
       .sort(sorter);
 
     return this.__todos;
