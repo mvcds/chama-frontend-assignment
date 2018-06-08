@@ -103,6 +103,8 @@ class TodoList {
       .filter(isActive)
       .sort(sorter);
 
+    this.__todos.forEach(fixPriority, this);
+
     return this.__todos;
   }
 
