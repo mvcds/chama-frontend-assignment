@@ -37,7 +37,7 @@ function StaticTodo (props) {
 
   return (
     <div
-      onMouseEnter={onHover}
+      onMouseEnter={() => onHover(todo)}
     >
       <input
         className={baseClass('completion')}

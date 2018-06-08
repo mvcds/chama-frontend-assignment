@@ -97,7 +97,7 @@ class TodoItemState extends Component {
       onStartEditingDueDate: startEditingDueDate.bind(this),
       onFinishEditingDueDate: finishEditingDueDate.bind(this),
       onSaveDueDate: saveDueDate.bind(this, props.todo),
-      onHover: playSound.bind(this, props.todo)
+      onHover: playSound.bind(this)
     }
   }
 
