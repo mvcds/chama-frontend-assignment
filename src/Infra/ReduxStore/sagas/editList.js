@@ -1,10 +1,10 @@
 import { take, select, put, call } from 'redux-saga/effects';
 
-function* moveTodos () {
+function* editList (type) {
   while (true) {
-    const { payload } = yield take('MOVE_TODO_ASYNC');
+    const { payload } = yield take(`${type}_ASYNC`);
 
-    yield put({ type: 'MOVE_TODO', payload })
+    yield put({ type, payload })
 
     const { firewatcher, firebase: { auth: { uid } }, todoList } = yield select();
 
@@ -12,4 +12,4 @@ function* moveTodos () {
   }
 }
 
-export default moveTodos;
+export default editList;

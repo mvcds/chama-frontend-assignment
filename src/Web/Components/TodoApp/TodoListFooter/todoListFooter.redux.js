@@ -7,7 +7,7 @@ function toggleSorter (dispatch) {
 }
 
 function clearTodos (dispatch) {
-  dispatch({ type: 'CLEAR_COMPLETED_TODOS' })
+  dispatch({ type: 'CLEAR_COMPLETED_TODOS_ASYNC' })
 }
 
 function mapStateToProps ({ todoList: { todos, completed, sort } }) {

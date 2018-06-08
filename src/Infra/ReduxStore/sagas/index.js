@@ -4,7 +4,7 @@ import addTodo from './addTodo';
 import fetchTodoList from './fetchTodoList';
 import editTodo from './editTodo';
 import setDueDate from './setDueDate';
-import moveTodos from './moveTodos.js';
+import editList from './editList.js';
 
 function* sagas() {
   yield all([
@@ -14,7 +14,9 @@ function* sagas() {
     editTodo('TOGGLE_TODO', 'isCompleted'),
     editTodo('DELETE_TODO', 'isDeleted', true),
     setDueDate(),
-    moveTodos()
+    editList('MOVE_TODO'),
+    editList('TOGGLE_ALL'),
+    editList('CLEAR_COMPLETED_TODOS')
   ]);
 }
 

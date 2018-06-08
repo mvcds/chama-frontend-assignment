@@ -4,7 +4,7 @@ import TodoList from './index';
 
 function toggleAll (dispatch, { target }) {
   dispatch({
-    type: 'TOGGLE_ALL',
+    type: 'TOGGLE_ALL_ASYNC',
     payload: {
       isCompleted: target.checked
     }
