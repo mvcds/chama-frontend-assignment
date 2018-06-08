@@ -20,7 +20,7 @@ function create (bound, data) {
   return new Todo(fixture);
 }
 
-function withDueDate (fn, { days }, data) {
+function withDueDate (fn, { days = 0 } = {}, data) {
     const dueDate = moment()[fn](days, 'days')
       .startOf('day')
       .toDate();
