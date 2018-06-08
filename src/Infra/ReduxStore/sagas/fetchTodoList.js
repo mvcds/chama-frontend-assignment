@@ -7,12 +7,12 @@ function* fetchTodoList () {
 
     if (!uid) continue;
 
-    const todos = yield call(firewatcher.read(`users/${uid}/todos`));
+    const ref = yield call(firewatcher.read, `users/${uid}/todos`);
 
     yield put({
       type: 'READ_TODOS',
       payload: {
-        todos
+        todos: ref.val()
       }
     })
   }

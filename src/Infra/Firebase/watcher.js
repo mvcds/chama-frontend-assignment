@@ -1,4 +1,8 @@
 class Firewatcher {
+  constructor() {
+    this.read = this.read.bind(this)
+  }
+
   get create () {
     return this.__firebase.push;
   }
@@ -8,11 +12,7 @@ class Firewatcher {
   }
 
   read (path) {
-    const ref = this.__firebase.ref(path);
-
-    return () => new Promise((resolve) => {
-      ref.on('value', (snapshot) => resolve(snapshot.val()))
-    });
+    return this.__firebase.ref(path).once('value');
   }
 
   get delete () {
