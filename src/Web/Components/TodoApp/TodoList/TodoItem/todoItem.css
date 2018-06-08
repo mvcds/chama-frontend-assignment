@@ -3,6 +3,7 @@
   padding: 16px;
   background: #FFFFFF;
   flex: 1;
+  align-items: center;
 }
 
 .todo-item--near {
@@ -14,7 +15,6 @@
 }
 
 .todo-item__completion {
-  align-self: center;
   margin: 0;
 }
 
@@ -46,4 +46,9 @@
 
 .todo-item__due-date:hover {
   background-color: #EEE;
+}
+
+.todo-item__priority {
+  font-size: .8em;
+  margin-left: 8px;
 }

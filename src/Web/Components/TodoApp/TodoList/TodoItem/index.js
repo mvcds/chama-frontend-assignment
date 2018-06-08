@@ -53,6 +53,9 @@ function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate
         />
       </button>
       <DueDate {...dueDate} dueDate={todo.dueDate} />
+      <span className={baseClass('priority')}>
+        {todo.priority}
+      </span>
     </React.Fragment>
   )
 }

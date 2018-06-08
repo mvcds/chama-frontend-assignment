@@ -7,7 +7,7 @@ function* addTodo () {
     const { payload: { text } } = yield take('ADD_TODO_ASYNC');
     const { firewatcher, firebase: { auth: { uid } }, todoList } = yield select();
 
-    const priority = todoList.active.length;
+    const priority = todoList.active.length + 1;
 
     const todo = new Todo({ text, priority })
 

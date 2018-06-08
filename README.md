@@ -26,7 +26,9 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
 * Database
   * [X] Use Firebase real-time database to keep all the TODOs;
   * [X] Manage database state using Redux;
-* [ ] Assign priority to a TODO and order them by highest to lowest priority;
+* Priority
+  * [ ] Assign priority to a TODO
+  * [X] Ordem them highest to lowest priority
 * Set a due time. With hints that indicate hat the due time is near and has passed;
   * [X] Visual hint
   * [ ] Auditive hint
