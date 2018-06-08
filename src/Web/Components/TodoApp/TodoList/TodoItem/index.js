@@ -28,7 +28,13 @@ function DueDate (props) {
   )
 }
 
-function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate, ...dueDate }) {
+function StaticTodo (props) {
+  const {
+    todo, handle,
+    onToggle, onStartEditingText, onStartEditingDueDate,
+    ...dueDate
+  } = props
+
   return (
     <React.Fragment>
       <input
@@ -53,7 +59,10 @@ function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate
         />
       </button>
       <DueDate {...dueDate} dueDate={todo.dueDate} />
-      <span className={baseClass('priority')}>
+      <span
+        className={baseClass('priority')}
+        {...handle}
+      >
         {todo.priority}
       </span>
     </React.Fragment>

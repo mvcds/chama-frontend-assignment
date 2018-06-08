@@ -1,4 +1,5 @@
 import React from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TodoItem from './TodoItem'
 
@@ -6,19 +7,47 @@ import './todoList.css';
 
 function asItem (todo, index) {
   return (
-    <li key={todo.id} className="todo-list__item">
-      <TodoItem {...this} todo={todo} />
-    </li>
+    <Draggable
+      key={todo.id}
+      draggableId={todo.id}
+      index={index}
+    >
+      {(provided, snapshot) => (
+        <li
+          className="todo-list__item"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+
+        >
+          <TodoItem
+            {...this}
+            todo={todo}
+            handle={provided.dragHandleProps}
+          />
+        </li>
+      )}
+    </Draggable>
   )
 }
 
-function TodoList ({ todos, ...item }) {
+function TodoList ({ todos, onDragEnd, ...item }) {
   if (!todos) return null;
 
   return (
-    <ul className="todo-list">
-      {todos.map(asItem, item)}
-    </ul>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="todos">
+        {(provided, snapshot) => (
+          <ul
+            className="todo-list"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            {todos.map(asItem, item)}
+          </ul>
+        )}
+      </Droppable>
+    </DragDropContext>
   )
 }
 

@@ -7,7 +7,7 @@ function Sorter ({ total, isAsc, onToggle }) {
 
   return (
     <button onClick={onToggle}>
-      Set {isAsc ? 'highest' : 'lowest'} priority first
+      Show {isAsc ? 'lowest' : 'highest'} priority first
     </button>
   )
 }

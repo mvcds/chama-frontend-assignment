@@ -6,7 +6,7 @@ const DESTROY = { isDeleted: true }
 
 const DEFAULTS = {
   todos: [],
-  sort: DESCENDENT
+  sort: ASCENDENT
 }
 
 function isCompleted (todo) {
@@ -40,6 +40,43 @@ function asJson (json, [ key, value ]) {
     ...json,
     [key]: value
   }
+}
+
+function swapTodos (active, source, destination) {
+  const original = active[source];
+
+  active[source] = active[destination];
+  active[destination] = original;
+}
+
+function fixPriority(todo, priority, { length }) {
+  const newPriority = this.sort === ASCENDENT ? (priority + 1) : (length - priority);
+
+  todo.priority = newPriority;
+}
+
+function moveNaturally (source, destination) {
+  const { active } = this;
+
+  for (let index = source; index < destination; index++) {
+    swapTodos(active, index, index + 1);
+  }
+
+  active.forEach(fixPriority, this)
+
+  return clone.call(this);
+}
+
+function moveInverse (source, destination) {
+  const { active } = this;
+
+  for (let index = source; index > destination; index--) {
+    swapTodos(active, index, index - 1);
+  }
+
+  active.forEach(fixPriority, this)
+
+  return clone.call(this);
 }
 
 class TodoList {
@@ -148,6 +185,16 @@ class TodoList {
       .map(([ id, todo ]) => new Todo({ ...todo, id }));
 
     return new TodoList({ todos });
+  }
+
+  moveTodos (source, destination) {
+    const doppelganger = clone.call(this);
+
+    const isNatural = source < destination;
+
+    const move = isNatural ? moveNaturally : moveInverse;
+
+    return move.call(doppelganger, source, destination);
   }
 }
 

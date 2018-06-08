@@ -1,6 +1,7 @@
 class Firewatcher {
   constructor() {
     this.read = this.read.bind(this)
+    this.set = this.set.bind(this)
   }
 
   get create () {
@@ -17,6 +18,10 @@ class Firewatcher {
 
   get delete () {
     return this.__firebase.remove;
+  }
+
+  set (path, todos) {
+    return this.__firebase.ref(path).set(todos);
   }
 
   ignite (firebase) {

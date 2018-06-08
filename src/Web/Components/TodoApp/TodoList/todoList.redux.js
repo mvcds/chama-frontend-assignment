@@ -39,6 +39,18 @@ function saveDueDate (dispatch, todo, dueDate) {
   })
 }
 
+function move (dispatch, { source, destination }) {
+  if (!destination) return;
+
+  dispatch({
+    type: 'MOVE_TODO_ASYNC',
+    payload: {
+      source: source.index,
+      destination: destination.index
+    }
+  })
+}
+
 function mapStateToProps ({ todoList: { todos }}) {
   return {
     todos
@@ -50,7 +62,8 @@ function mapDispatchToProps (dispatch) {
     onToggle: toggleTodo.bind(null, dispatch),
     onEdit: editTodo.bind(null, dispatch),
     onDelete: deleteTodo.bind(null, dispatch),
-    onSaveDueDate: saveDueDate.bind(null, dispatch)
+    onSaveDueDate: saveDueDate.bind(null, dispatch),
+    onDragEnd: move.bind(null, dispatch)
   };
 }
 
