@@ -16,16 +16,17 @@ class Todo {
     Object.assign(this, DEFAULTS, data);
   }
 
-  get status () {
-    if (!this.dueDate) return STATUSES.Normal;
+  get daysToDueDate () {
+    if (!this.dueDate) return;
 
     const now = moment().startOf('day');
 
-    const days = moment(this.dueDate)
-      .startOf('day')
+    return moment(this.dueDate).startOf('day')
       .diff(now, 'days');
+  }
 
-    if (days > 7) return STATUSES.Normal;
+  getStatus (days = null) {
+    if (days === null || days >= 7) return STATUSES.Normal;
 
     return days < 0 ? STATUSES.Expired : STATUSES.Near;
   }

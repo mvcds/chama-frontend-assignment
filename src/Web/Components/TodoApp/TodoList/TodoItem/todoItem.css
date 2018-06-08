@@ -1,3 +1,4 @@
+/* https://meyerweb.com/eric/tools/color-blend */
 .todo-item {
   display: flex;
   padding: 16px;
@@ -6,8 +7,64 @@
   align-items: center;
 }
 
-.todo-item--near {
+.todo-item[data-days-to-due-date='7'] {
+  background: #FFFBDF;
+}
+
+.todo-item[data-days-to-due-date='6'] {
+  background: #FFF6BF;
+}
+
+.todo-item[data-days-to-due-date='5'] {
+  background: #FFF29F;
+}
+
+.todo-item[data-days-to-due-date='4'] {
+  background: #FFEE80;
+}
+
+.todo-item[data-days-to-due-date='3'] {
+  background: #FFE960;
+}
+
+.todo-item[data-days-to-due-date='2'] {
+  background: #FFE540;
+}
+
+.todo-item[data-days-to-due-date='1'] {
+  background: #FFE020;
+}
+
+.todo-item[data-days-to-due-date='0'] {
   background: #FFDC00;
+}
+
+.todo-item[data-days-to-due-date='-1'] {
+  background: #FFC907;
+}
+
+.todo-item[data-days-to-due-date='-2'] {
+  background: #FFB50E;
+}
+
+.todo-item[data-days-to-due-date='-3'] {
+  background: #FFA214;
+}
+
+.todo-item[data-days-to-due-date='-4'] {
+  background: #FF8F1B;
+}
+
+.todo-item[data-days-to-due-date='-5'] {
+  background: #FF7B22;
+}
+
+.todo-item[data-days-to-due-date='-6'] {
+  background: #FF6829;
+}
+
+.todo-item[data-days-to-due-date='-7'] {
+  background: #FF542F;
 }
 
 .todo-item--expired {

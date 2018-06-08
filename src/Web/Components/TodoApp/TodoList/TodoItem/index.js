@@ -86,8 +86,15 @@ function EditableTodo ({ text, onKeyDown, onChangeText, onFinishEditingText }) {
 function TodoItem ({ isEditingText, todo, ...rest }) {
   const Todo = isEditingText ? EditableTodo : StaticTodo
 
+  const { daysToDueDate } = todo;
+
+  const status = todo.getStatus(daysToDueDate);
+
   return (
-    <div className={baseClass([ todo.status ])}>
+    <div
+      className={baseClass([ status ])}
+      data-days-to-due-date={daysToDueDate}
+    >
       <Todo todo={todo} {...rest} />
     </div>
   )

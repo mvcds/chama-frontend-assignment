@@ -9,10 +9,11 @@ import TodoFactory from '../../../../../Domain/Entities/Todo/todo.factory';
 import TodoItem from './index';
 
 const MIN = 0;
+const MAX = 8;
 
 const DAYS = {
   min: MIN,
-  max: 8,
+  max: MAX,
   range: true
 };
 
@@ -54,7 +55,7 @@ storiesOf('Organisms / Todo Item', module)
   .add('Near to Due Date', () => {
     const textTodo = text('To do', todoSeed)
     const isCompleted = boolean('Completed?', false)
-    const days = number('Days to due date', MIN, DAYS)
+    const days = number('Days to due date', MAX, DAYS)
 
     const todo = TodoFactory.NearDueDate({ days }, {
       text: textTodo,
