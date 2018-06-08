@@ -6,7 +6,7 @@ function* editTodo (type, key, defaultValue) {
     const { firewatcher, firebase: { auth: { uid } } } = yield select();
 
     const { todo } = payload;
-    const value = payload[key] || defaultValue;
+    const value = payload[key] === undefined ? defaultValue : payload[key];
 
     yield put({
       type,
