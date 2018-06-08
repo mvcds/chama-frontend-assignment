@@ -1,15 +1,11 @@
 import { take, select, put, call } from 'redux-saga/effects';
 
-import Todo from '../../../Domain/Entities/Todo';
-
 function* addTodo () {
   while (true) {
-    const { payload: { text } } = yield take('ADD_TODO_ASYNC');
+    const { payload } = yield take('ADD_TODO_ASYNC');
     const { firewatcher, firebase: { auth: { uid } }, todoList } = yield select();
 
-    const priority = todoList.active.length + 1;
-
-    const todo = new Todo({ text, priority })
+    const todo = todoList.createTodo(payload);
 
     const { key } = yield call(firewatcher.create, `users/${uid}/todos`, todo);
 

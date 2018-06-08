@@ -196,6 +196,12 @@ class TodoList {
 
     return move.call(doppelganger, source, destination);
   }
+
+  createTodo ({ text }) {
+    const priority = this.active.length + 1;
+
+    return new Todo({ text, priority });
+  }
 }
 
 export default TodoList;
