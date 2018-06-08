@@ -17,7 +17,7 @@ class Todo {
   }
 
   get daysToDueDate () {
-    if (!this.dueDate) return;
+    if (!this.dueDate) return null;
 
     const now = moment().startOf('day');
 
@@ -25,7 +25,7 @@ class Todo {
       .diff(now, 'days');
   }
 
-  getStatus (days = null) {
+  getStatus (days = this.daysToDueDate) {
     if (days === null || days >= 7) return STATUSES.Normal;
 
     return days < 0 ? STATUSES.Expired : STATUSES.Near;

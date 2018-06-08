@@ -31,7 +31,7 @@ Chama relies on [Firebase](https://firebase.google.com/) to give our dealers a r
   * [X] Ordem them highest to lowest priority
 * Set a due time. With hints that indicate hat the due time is near and has passed;
   * [X] Visual hint
-  * [ ] Auditive hint
+  * [X] Auditive hint
 * [X] Host working app in a Firebase Hosting environment.
 
 # Hints

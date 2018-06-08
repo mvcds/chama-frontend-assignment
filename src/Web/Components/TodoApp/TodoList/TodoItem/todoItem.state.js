@@ -70,6 +70,12 @@ function saveDueDate (todo, date) {
   this.props.onSaveDueDate(todo, date);
 }
 
+function playSound(todo) {
+  const status = todo.getStatus()
+
+  this.props.onHover(status);
+}
+
 class TodoItemState extends Component {
   constructor (props) {
     super(props);
@@ -90,7 +96,8 @@ class TodoItemState extends Component {
       onFinishEditingText: finishEditingText.bind(this),
       onStartEditingDueDate: startEditingDueDate.bind(this),
       onFinishEditingDueDate: finishEditingDueDate.bind(this),
-      onSaveDueDate: saveDueDate.bind(this, props.todo)
+      onSaveDueDate: saveDueDate.bind(this, props.todo),
+      onHover: playSound.bind(this, props.todo)
     }
   }
 

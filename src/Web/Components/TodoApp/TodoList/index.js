@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TodoItem from './TodoItem'
@@ -6,6 +6,8 @@ import TodoItem from './TodoItem'
 import './todoList.css';
 
 function asItem (todo, index) {
+  const { item, onHover } = this
+
   return (
     <Draggable
       key={todo.id}
@@ -20,9 +22,10 @@ function asItem (todo, index) {
 
         >
           <TodoItem
-            {...this}
+            {...item}
             todo={todo}
             handle={provided.dragHandleProps}
+            onHover={onHover}
           />
         </li>
       )}
@@ -30,25 +33,77 @@ function asItem (todo, index) {
   )
 }
 
-function TodoList ({ todos, onDragEnd, ...item }) {
-  if (!todos) return null;
+class TodoList extends Component {
+  constructor (props) {
+    super(props);
 
-  return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="todos">
-        {(provided, snapshot) => (
-          <ul
-            className="todo-list"
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            {todos.map(asItem, item)}
-          </ul>
-        )}
-      </Droppable>
-    </DragDropContext>
-  )
+    this.state = {
+      isDraging: false
+    }
+
+    this.onHover = this.onHover.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
+  }
+
+  onDragStart () {
+    for (const ref in this.refs) {
+      this.refs[ref].pause();
+    }
+
+    this.setState({ isDraging: true });
+  }
+
+  onDragEnd () {
+    this.setState({ isDraging: false });
+    this.props.onDragEnd(...arguments);
+  }
+
+  onHover (status) {
+    if (this.state.isDraging) return;
+
+    for (const ref in this.refs) {
+      this.refs[ref].currentTime = 0;
+    }
+
+    const audio = this.refs[status];
+
+    audio && audio.play()
+  }
+
+  render () {
+    const { todos, ...item } = this.props
+
+    if (!todos) return null;
+
+    const { onDragStart, onDragEnd, onHover } = this
+
+    return (
+      <DragDropContext
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+      >
+        <Droppable droppableId="todos">
+          {(provided, snapshot) => (
+            <ul
+              className="todo-list"
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              {todos.map(asItem, { item, onHover })}
+            </ul>
+          )}
+        </Droppable>
+        <audio preload="auto" ref="near">
+          <source src="./beep.mp3"></source>
+        </audio>
+        <audio preload="auto" ref="expired">
+          <source src="./horse.ogg"></source>
+        </audio>
+      </DragDropContext>
+    )
+  }
 }
 
 export default TodoList;

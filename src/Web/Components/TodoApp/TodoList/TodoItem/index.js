@@ -31,12 +31,14 @@ function DueDate (props) {
 function StaticTodo (props) {
   const {
     todo, handle,
-    onToggle, onStartEditingText, onStartEditingDueDate,
+    onToggle, onStartEditingText, onStartEditingDueDate, onHover,
     ...dueDate
   } = props
 
   return (
-    <React.Fragment>
+    <div
+      onMouseEnter={onHover}
+    >
       <input
         className={baseClass('completion')}
         type="checkbox"
@@ -65,7 +67,7 @@ function StaticTodo (props) {
       >
         {todo.priority}
       </span>
-    </React.Fragment>
+    </div>
   )
 }
 

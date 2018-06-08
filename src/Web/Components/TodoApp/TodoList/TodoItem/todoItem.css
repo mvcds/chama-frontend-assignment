@@ -1,10 +1,7 @@
 /* https://meyerweb.com/eric/tools/color-blend */
 .todo-item {
-  display: flex;
-  padding: 16px;
-  background: #FFFFFF;
   flex: 1;
-  align-items: center;
+  background: #FFFFFF;
 }
 
 .todo-item[data-days-to-due-date='7'] {
@@ -69,6 +66,13 @@
 
 .todo-item--expired {
   background: #FF4136;
+}
+
+.todo-item > div {
+  flex: 1;
+  display: flex;
+  padding: 16px;
+  align-items: center;
 }
 
 .todo-item__completion {
