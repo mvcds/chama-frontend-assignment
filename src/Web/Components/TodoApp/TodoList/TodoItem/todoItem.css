@@ -1,5 +1,16 @@
 .todo-item {
   display: flex;
+  padding: 16px;
+  background: #FFFFFF;
+  flex: 1;
+}
+
+.todo-item--near {
+  background: #FFDC00;
+}
+
+.todo-item--expired {
+  background: #FF4136;
 }
 
 .todo-item__completion {
@@ -10,6 +21,10 @@
 .todo-item__text {
   margin: 0 8px;
   flex: 1;
+}
+
+.todo-item__text--is-completed {
+  text-decoration: line-through;
 }
 
 .todo-item__input {

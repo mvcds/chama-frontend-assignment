@@ -1,12 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
 import { lorem } from 'faker';
 
 import TodoFactory from '../../../../../Domain/Entities/Todo/todo.factory';
 
 import TodoItem from './index';
+
+const MIN = 0;
+
+const DAYS = {
+  min: MIN,
+  max: 8,
+  range: true
+};
 
 const props = {
   todo: TodoFactory.Random(),
@@ -35,6 +43,40 @@ storiesOf('Organisms / Todo Item', module)
 
     todo.text = textTodo
     todo.isCompleted = isCompleted
+
+    return (
+      <TodoItem
+        {...props}
+        todo={todo}
+      />
+    )
+  })
+  .add('Near to Due Date', () => {
+    const textTodo = text('To do', todoSeed)
+    const isCompleted = boolean('Completed?', false)
+    const days = number('Days to due date', MIN, DAYS)
+
+    const todo = TodoFactory.NearDueDate({ days }, {
+      text: textTodo,
+      isCompleted
+    })
+
+    return (
+      <TodoItem
+        {...props}
+        todo={todo}
+      />
+    )
+  })
+  .add('Expired Due Date', () => {
+    const textTodo = text('To do', todoSeed)
+    const isCompleted = boolean('Completed?', false)
+    const days = number('Expired days', MIN, DAYS)
+
+    const todo = TodoFactory.ExpiredDueDate({ days }, {
+      text: textTodo,
+      isCompleted
+    })
 
     return (
       <TodoItem

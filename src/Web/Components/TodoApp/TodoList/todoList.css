@@ -6,9 +6,11 @@
 }
 
 .todo-list__item {
+  display: flex;
+  margin: 0;
+  padding: 0;
   position: relative;
   font-size: 2em;
   border-bottom: 1px solid #EDEDED;
-  padding: 16px;
   background: #FFFFFF;
 }

@@ -38,7 +38,7 @@ function StaticTodo ({ todo, onToggle, onStartEditingText, onStartEditingDueDate
         checked={todo.isCompleted}
       />
       <span
-        className={baseClass('text')}
+        className={baseClass('text', { 'is-completed': todo.isCompleted })}
         onDoubleClick={onStartEditingText}
       >
         {todo.text}
@@ -71,11 +71,13 @@ function EditableTodo ({ text, onKeyDown, onChangeText, onFinishEditingText }) {
   )
 }
 
-function TodoItem ({ isEditingText, ...rest }) {
+function TodoItem ({ isEditingText, todo, ...rest }) {
   const Todo = isEditingText ? EditableTodo : StaticTodo
 
   return (
-    <Todo {...rest} />
+    <div className={baseClass([ todo.status ])}>
+      <Todo todo={todo} {...rest} />
+    </div>
   )
 }
 

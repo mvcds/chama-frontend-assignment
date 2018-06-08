@@ -1,5 +1,6 @@
 import { Factory } from 'rosie';
 import { lorem, random, date } from 'faker';
+import moment from 'moment';
 
 import Todo from './index';
 
@@ -18,11 +19,21 @@ function create (bound, data) {
   return new Todo(fixture);
 }
 
+function withDueDate (fn, { days }, data) {
+    const dueDate = moment()[fn](days, 'days')
+      .startOf('day')
+      .toDate();
+
+    return create({ ...data, dueDate })
+}
+
 const TODOS = {
   NonCompleted: create.bind(null, { isCompleted: false }),
   Completed: create.bind(null, { isCompleted: true }),
   WithDueDate: create.bind(null, {}),
   WithoutDueDate: create.bind(null, { dueDate: undefined }),
+  NearDueDate: withDueDate.bind(null, 'add'),
+  ExpiredDueDate: withDueDate.bind(null, 'subtract')
 }
 
 const MAPPED = Object.values(TODOS)
