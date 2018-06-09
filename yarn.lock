@@ -3275,10 +3275,6 @@ detect-port-alt@1.1.6:
     address "^1.0.1"
     debug "^2.6.0"
 
-dialog-polyfill@^0.4.7:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/dialog-polyfill/-/dialog-polyfill-0.4.9.tgz#c690b3727c3d82e0f947bd5b910b32af8a2ef57d"
-
 didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
@@ -4286,7 +4282,7 @@ firebase@2.x.x:
   dependencies:
     faye-websocket ">=0.6.0"
 
-firebase@^5.0.0, firebase@^5.0.4:
+firebase@^5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.0.4.tgz#f367c80531c1a8a4ef82b6537b2a6bd92685e226"
   dependencies:
@@ -4298,13 +4294,6 @@ firebase@^5.0.0, firebase@^5.0.4:
     "@firebase/messaging" "0.3.4"
     "@firebase/polyfill" "0.3.3"
     "@firebase/storage" "0.2.3"
-
-firebaseui@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/firebaseui/-/firebaseui-3.0.0.tgz#c3749683c6889c5e4ac0ebf8d62c112414351a3c"
-  dependencies:
-    dialog-polyfill "^0.4.7"
-    firebase "^5.0.0"
 
 flat-arguments@^1.0.0:
   version "1.0.2"
@@ -8187,12 +8176,6 @@ react-dom@^16.4.0:
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
-
-react-firebaseui@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-firebaseui/-/react-firebaseui-3.0.4.tgz#faeef2cee1aa681d832ffd9d28fdf69789b2abf2"
-  dependencies:
-    firebaseui "^3.0.0"
 
 react-fuzzy@^0.5.2:
   version "0.5.2"

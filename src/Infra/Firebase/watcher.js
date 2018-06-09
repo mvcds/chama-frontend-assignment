@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 class Firewatcher {
   constructor() {
     this.read = this.read.bind(this)
@@ -34,6 +36,24 @@ class Firewatcher {
 
   extinguish () {
     return this.ignite();
+  }
+
+  login () {
+    if (this.__firebase) {
+      const google = new firebase.auth.GoogleAuthProvider();
+
+      this.__firebase.auth().signInWithRedirect(google);
+    }
+
+    return this
+  }
+
+  logout () {
+    if (this.__firebase) {
+      this.__firebase.auth().signOut();
+    }
+
+    return this;
   }
 }
 

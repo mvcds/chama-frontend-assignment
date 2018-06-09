@@ -1,49 +1,33 @@
-import React, { Component } from 'react';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import React from 'react';
 
-import { signInOptions } from '../../../Infra/Firebase';
+function Authentication () {
+  return (
+    <div>Authenticating...</div>
+  )
+}
 
-const uiConfig = {
-  signInFlow: 'redirect',
-  signInOptions,
-  callbacks: {
-    signInSuccessWithAuthResult: () => false
-  }
-};
+function Logout ({ onLogout, userName }) {
+  return (
+    <button onClick={onLogout}>
+      Logout, {userName}
+    </button>
+  )
+}
 
-class AuthGateway extends Component {
-  constructor(props) {
-    super(props);
+function Login ({ onLogin }) {
+  return (
+    <button onClick={onLogin}>
+      Login with Google
+    </button>
+  )
+}
 
-    this.auth = this.props.firebase.auth();
-    this.Logout = this.Logout.bind(this);
-  }
+function AuthGateway({ shouldAuthenticate, isLoaded, ...auth }) {
+  if (shouldAuthenticate) return <Login {...auth} />
 
-  render () {
-    if (this.props.shouldAuthenticate) return (
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={this.auth} />
-    )
+  if (isLoaded) return <Logout {...auth} />
 
-    const Content = this.props.isLoaded ? this.Logout : this.Authentication
-
-    return <Content />
-  }
-
-  Authentication () {
-    return (
-      <div>Authenticating...</div>
-    )
-  }
-
-  Logout () {
-    const { firebase, userName } = this.props;
-
-    return (
-      <button onClick={firebase.logout}>
-        Logout, {userName}
-      </button>
-    )
-  }
+  return <Authentication />
 }
 
 export default AuthGateway;
