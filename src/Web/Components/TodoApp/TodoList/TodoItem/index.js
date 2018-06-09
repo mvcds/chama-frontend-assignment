@@ -65,7 +65,7 @@ function StaticTodo (props) {
         className={baseClass('priority')}
         {...handle}
       >
-        {todo.priority}
+        #{todo.priority}
       </span>
     </div>
   )
