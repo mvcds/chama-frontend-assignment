@@ -5,7 +5,7 @@ const DESCENDENT = 'desc'
 const DESTROY = { isDeleted: true }
 
 const DEFAULTS = {
-  todos: [],
+  todos: {},
   sort: ASCENDENT
 }
 
@@ -17,14 +17,10 @@ function isActive (todo) {
   return !todo.isDeleted;
 }
 
-function addToMapping (map, todo) {
-  return map.set(todo.id, todo);
-}
-
 function clone () {
-  const todos = Array.from(this.__rawTodos.values());
+  const { __rawTodos: todos, sort } = this;
 
-  return new TodoList({ ...this, todos });
+  return new TodoList({ todos, sort });
 }
 
 function AscSort (a, b) {
@@ -35,10 +31,19 @@ function DescSort (a, b) {
   return AscSort(b, a);
 }
 
-function asJson (json, [ key, value ]) {
+function asJson (json, [ id, todo ]) {
   return {
     ...json,
-    [key]: value
+    [id]: todo
+  }
+}
+
+function convertActiveTodos (todos, [ id, todo ]) {
+  if (todo.isDeleted) return todos;
+
+  return {
+    ...todos,
+    [id]: new Todo({ ...todo, id })
   }
 }
 
@@ -81,17 +86,10 @@ function moveInverse (source, destination) {
 
 class TodoList {
   constructor (raw) {
-    const data = Object.assign({}, DEFAULTS, raw)
+    const { todos, sort } = Object.assign({}, DEFAULTS, raw)
 
-    const {
-      todos, completed, active, isCompleted,
-      __rawTodos, __todos,
-      ...rest
-    } = data
-
-    Object.assign(this, rest);
-
-    this.__rawTodos = todos.reduce(addToMapping, new Map());
+    this.__rawTodos = todos;
+    this.sort = sort;
   }
 
   get todos () {
@@ -99,11 +97,9 @@ class TodoList {
 
     const sorter = this.sort === ASCENDENT ? AscSort : DescSort;
 
-    this.__todos = Array.from(this.__rawTodos.values())
+    this.__todos = Object.values(this.__rawTodos)
       .filter(isActive)
       .sort(sorter);
-
-    this.__todos.forEach(fixPriority, this);
 
     return this.__todos;
   }
@@ -123,19 +119,17 @@ class TodoList {
   addTodo (todo) {
     const doppelganger = clone.call(this);
 
-    doppelganger.__rawTodos.set(todo.id, todo);
+    doppelganger.__rawTodos[todo.id] = todo;
 
     return doppelganger;
   }
 
   editTodo (todo, data) {
-    const canEdit = this.__rawTodos.has(todo.id);
+    const oldTodo = this.__rawTodos[todo.id];
 
-    if (!canEdit) return this;
+    if (!oldTodo) return this;
 
     const doppelganger = clone.call(this);
-
-    const oldTodo = doppelganger.__rawTodos.get(todo.id);
 
     Object.assign(oldTodo, data);
 
@@ -160,7 +154,8 @@ class TodoList {
   toggleSorter () {
     const doppelganger = clone.call(this);
 
-    doppelganger.sort = doppelganger.sort === ASCENDENT ? 'desc' : ASCENDENT;
+    doppelganger.sort = doppelganger.sort === ASCENDENT ? DESCENDENT : ASCENDENT;
+    doppelganger.__todos = undefined;
 
     return doppelganger;
   }
@@ -172,26 +167,26 @@ class TodoList {
       Object.assign(todo, DESTROY);
     }
 
-    doppelganger.__todos = undefined;
+    doppelganger.active.forEach(fixPriority, doppelganger);
 
     return doppelganger;
   }
 
   toJson () {
-    return Array.from(this.__rawTodos.entries())
+    return Object.entries(this.__rawTodos)
       .reduce(asJson, {});
   }
 
   readTodos (rawTodos) {
-    const nonNullRawTodos = rawTodos || {}
+    const todos = Object.entries(rawTodos || {})
+      .reduce(convertActiveTodos, {})
 
-    const todos = Object.entries(nonNullRawTodos)
-      .map(([ id, todo ]) => new Todo({ ...todo, id }));
-
-    return new TodoList({ todos });
+    return new TodoList({ ...this, todos });
   }
 
   moveTodos (source, destination) {
+    if (source === destination) return this;
+
     const doppelganger = clone.call(this);
 
     const isNatural = source < destination;
